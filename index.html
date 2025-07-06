@@ -3,151 +3,140 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name | Portfolio</title>
+  <title>Danson Aguila | Digital Analytics Professional</n  >
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #007bff;
-      --secondary: #ff4081;
-      --accent: #00e5ff;
-      --light: #f9f9f9;
-      --dark: #222;
+      --brand-dark: #1a1f36;
+      --brand-light: #f5f7fa;
+      --accent: #0066cc;
+      --text-dark: #333;
+      --text-light: #555;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Poppins', sans-serif; line-height: 1.6; background: var(--light); color: var(--dark); }
-    header { background: linear-gradient(135deg, var(--primary), var(--secondary)); position: sticky; top: 0; z-index: 100; animation: slideDown .6s ease-out; }
-    @keyframes slideDown { from { transform: translateY(-100%);} to { transform: translateY(0);} }
-    nav { display: flex; justify-content: center; padding: 1rem; }
-    nav a { color: #fff; margin: 0 1rem; text-decoration: none; font-weight: 600; position: relative; transition: transform .3s; }
-    nav a:hover { transform: scale(1.1); }
-    nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--accent); transition: width .3s; position: absolute; bottom: -4px; left: 0; }
-    nav a:hover::after { width: 100%; }
-    section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; opacity: 0; transform: translateY(20px); transition: opacity .6s ease-out, transform .6s ease-out; }
-    section.reveal { opacity: 1; transform: translateY(0); }
-    .hero { text-align: center; color: #fff; background: linear-gradient(135deg, var(--secondary), var(--accent)); padding: 6rem 2rem; position: relative; overflow: hidden; }
-    .hero h1 { font-size: 3rem; margin-bottom: .5rem; animation: fadeInUp 1s ease-out .3s forwards; opacity: 0; }
-    .hero p { font-size: 1.2rem; animation: fadeInUp 1s ease-out .6s forwards; opacity: 0; }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
-    h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
+    body { font-family: 'Montserrat', sans-serif; background: var(--brand-light); color: var(--text-dark); line-height: 1.6; }
+    header { background: var(--brand-dark); color: #fff; padding: 2rem; text-align: center; }
+    header h1 { font-size: 2.5rem; margin-bottom: .5rem; }
+    header p { font-size: 1rem; color: #bbb; }
+    nav { margin-top: 1rem; }
+    nav a { color: #fff; margin: 0 .75rem; text-decoration: none; font-weight: 600; }
+    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
+    /* Contact Info */
+    .contact-info { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .95rem; color: var(--text-light); }
+    .contact-info div { display: flex; align-items: center; gap: .5rem; }
+    /* Summary */
+    .summary { background: #fff; padding: 1.5rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
     /* Skills */
-    .skills-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-    .skills-list li { background: #fff; padding: .8rem 1.2rem; border-radius: 50px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); list-style: none; font-weight: 500; cursor: default; transition: transform .3s, box-shadow .3s; }
-    .skills-list li:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
-    /* Projects */
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .project-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform .3s, box-shadow .3s; cursor: pointer; }
-    .project-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
-    .project-card img { width: 100%; display: block; }
-    .project-content { padding: 1.5rem; }
-    .project-content h3 { color: var(--secondary); margin-bottom: .5rem; }
-    .project-content p { font-size: .95rem; color: #555; }
-    /* Testimonials */
-    .testimonials { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
-    .testimonials p { font-style: italic; margin-bottom: 1rem; }
-    .testimonials h4 { color: var(--primary); }
-    /* Contact */
-    .contact { text-align: center; background: var(--primary); color: #fff; padding: 3rem 2rem; border-radius: 12px; transition: background .3s; }
-    .contact:hover { background: var(--secondary); }
-    .contact a { display: inline-block; margin: .5rem 1rem; padding: .8rem 1.5rem; background: var(--accent); color: #fff; border-radius: 50px; text-decoration: none; font-weight: 600; transform: translateY(0); transition: background .3s, transform .3s; }
-    .contact a:hover { transform: translateY(-3px); background: var(--dark); }
-    /* Back to Top */
-    #backToTop { position: fixed; bottom: 2rem; right: 2rem; background: var(--accent); color: #fff; padding: .8rem; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); display: none; transition: transform .3s; }
-    #backToTop:hover { transform: scale(1.1); }
-    footer { text-align: center; padding: 1.5rem; font-size: .9rem; color: #777; }
+    .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+    .skills li { background: #fff; padding: .75rem 1rem; list-style: none; border: 1px solid #e0e0e0; border-radius: 6px; font-size: .9rem; color: var(--text-light); }
+    /* Timeline */
+    .timeline { list-style: none; position: relative; }
+    .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--accent); }
+    .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 60px; }
+    .timeline-item h3 { font-size: 1.1rem; margin-bottom: .25rem; color: var(--brand-dark); }
+    .timeline-item span { font-size: .9rem; color: var(--text-light); }
+    .timeline-item p { margin-top: .5rem; font-size: .95rem; }
+    .timeline-item::before { content: ''; position: absolute; left: 13px; top: 5px; width: 14px; height: 14px; background: var(--brand-dark); border-radius: 50%; }
+    /* Education */
+    .education li { margin-bottom: 1rem; }
+    .education span { display: block; font-size: .9rem; color: var(--text-light); }
+    /* Footer */
+    footer { text-align: center; padding: 1.5rem 0; font-size: .85rem; color: var(--text-light); }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .contact-info { flex-direction: column; }
+      nav a { display: block; margin: .5rem 0; }
+    }
   </style>
 </head>
 <body>
-  <button id="backToTop" title="Back to top">↑</button>
   <header>
+    <h1>Danson Pabalan Aguila</h1>
+    <p>Senior Manager, Digital Analytics | Adobe & Google MarTech Expert</p>
     <nav>
-      <a href="#about">About</a>
+      <a href="#summary">Summary</a>
       <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#testimonials">Testimonials</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <section class="hero" id="home">
-    <h1>Your Name</h1>
-    <p>Digital Analytics Manager &amp; Web Enthusiast</p>
+  <section id="summary">
+    <h2>Professional Summary</n  >
+    <div class="summary">
+      <p>An accomplished digital analytics and marketing technology professional with extensive expertise in leveraging Adobe and Google analytics suites, alongside advanced proficiency in tag management systems. Demonstrated success in optimizing digital experiences and marketing campaigns through data-driven insights and targeted strategies. Skilled in stakeholder collaboration, technical implementation, data analysis, quality assurance, and operational efficiency.</p>
+    </div>
   </section>
 
-  <section id="about" class="reveal">
-    <h2>About Me</h2>
-    <p>Hello! I’m a passionate Digital Analytics Manager with expertise in implementing tracking solutions, building interactive dashboards, and driving data-informed design decisions. I love turning complex data into actionable insights.</p>
-  </section>
-
-  <section id="skills" class="reveal">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>Adobe Analytics</li>
-      <li>GA4 &amp; GTM</li>
-      <li>Data Visualization</li>
-      <li>Agile &amp; Scrum</li>
-      <li>HTML, CSS, JS
+  <section id="skills">
+    <h2>Skills &amp; Martech Stack</h2>
+    <ul class="skills">
+      <li>HTML, CSS, JavaScript</li>
+      <li>Adobe Analytics, Target, Launch, Data Warehouse</li>
+      <li>Google Analytics 4, GTM, Search Console</li>
+      <li>Tealium iQ, SessionCam, Glassbox</li>
+      <li>Tableau, PowerBI, Looker, Medallia DXA</li>
+      <li>MySQL, REST API, VB.net, VBA</li>
+      <li>JIRA, Confluence, SharePoint, Wrike</li>
+      <li>SemRush, ObservePoint, BrightEdge</li>
     </ul>
   </section>
 
-  <section id="projects" class="reveal">
-    <h2>Projects</h2>
-    <div class="projects">
-      <div class="project-card">
-        <img src="https://via.placeholder.com/600x350" alt="Project 1">
-        <div class="project-content">
-          <h3>Experience Dashboard</h3>
-          <p>Developed a dynamic Adobe Analytics dashboard for web and client apps, providing real-time UX insights across multiple markets.</p>
-        </div>
-      </div>
-      <div class="project-card">
-        <img src="https://via.placeholder.com/600x350" alt="Project 2">
-        <div class="project-content">
-          <h3>Medallia Onboarding</h3>
-          <p>Led Medallia implementation from staging to UAT, enabling detailed behavioral analytics and PII-safe session recordings.</p>
-        </div>
-      </div>
-    </div>
+  <section id="experience">
+    <h2>Work Experience</h2>
+    <ul class="timeline">
+      <li class="timeline-item">
+        <h3>Senior Manager, Digital Analytics</h3>
+        <span>Sun Life Financial — October 2024 &ndash; Present</span>
+        <p>Lead regional digital analytics for Asia Experience Design office. Drive strategy for analytics implementation, dashboard development, and data-driven decision-making across web and client applications.</p>
+      </li>
+      <li class="timeline-item">
+        <h3>Digital Analyst</h3>
+        <span>ProSource BPO / iSelect — Nov 2023 &ndash; Sep 2024</span>
+        <p>Managed analytics tagging, reporting, and insights delivery for BPO clients. Streamlined data workflows and enhanced reporting accuracy.</p>
+      </li>
+      <li class="timeline-item">
+        <h3>Manager, MarTech</h3>
+        <span>HSBC DPS — Jan 2022 &ndash; Nov 2023</span>
+        <p>Oversaw marketing technology stack, including Adobe Launch and Google Tag Manager. Implemented A/B testing and personalization strategies.</p>
+      </li>
+      <li class="timeline-item">
+        <h3>Senior Manager, Digital Analytics</h3>
+        <span>Sun Life Financial — Jan 2019 &ndash; Dec 2022</span>
+        <p>Directed enterprise analytics initiatives, stakeholder coaching, and quality assurance processes for digital channels.</p>
+      </li>
+      <li class="timeline-item">
+        <h3>Manager, Digital Insights</h3>
+        <span>HSBC GPS — Jan 2012 &ndash; Dec 2018</span>
+        <p>Led digital insights team, delivering actionable analytics reports and user behavior analysis to global stakeholders.</p>
+      </li>
+    </ul>
   </section>
 
-  <section id="testimonials" class="reveal">
-    <h2>Testimonials</h2>
-    <div class="testimonials">
-      <p>“Working with [Your Name] was a game-changer—our dashboards have never been clearer or more actionable.”</p>
-      <h4>— UX Lead, Global Brand</h4>
-    </div>
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="education">
+      <li>
+        <strong>Pamantasan ng Lungsod ng Muntinlupa</strong>
+        <span>Bachelor of Science in Computer Science, 2002 &ndash; 2006</span>
+      </li>
+    </ul>
   </section>
 
-  <section id="contact" class="contact reveal">
-    <h2>Get in Touch</h2>
-    <p>Let’s collaborate on your next project!</p>
-    <a href="mailto:youremail@example.com">Email Me</a>
-    <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+  <section id="contact">
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <div><strong>Email:</strong> <a href="mailto:d97i42@gmail.com">d97i42@gmail.com</a></div>
+      <div><strong>Phone:</strong> (+63) 962-4983-532</div>
+      <div><strong>Location:</strong> Biñan, Laguna, Philippines</div>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 Your Name. All rights reserved.
+    &copy; 2025 Danson Pabalan Aguila. All rights reserved.
   </footer>
-
-  <script>
-    // Reveal on scroll
-    const sections = document.querySelectorAll('section');
-    const revealOnScroll = () => {
-      const triggerPoint = window.innerHeight * 0.8;
-      sections.forEach(sec => {
-        const top = sec.getBoundingClientRect().top;
-        if (top < triggerPoint) sec.classList.add('reveal');
-      });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-
-    // Back to top
-    const backBtn = document.getElementById('backToTop');
-    window.addEventListener('scroll', () => {
-      if (window.pageYOffset > 300) backBtn.style.display = 'block'; else backBtn.style.display = 'none';
-    });
-    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  </script>
 </body>
 </html>
