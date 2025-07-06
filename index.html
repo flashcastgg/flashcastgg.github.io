@@ -13,11 +13,13 @@
       --accent: #0066cc;
       --text-dark: #333;
       --text-light: #555;
+      --header-height: 120px;
+      --highlight-color: rgba(255, 235, 59, 0.5);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', sans-serif; background: var(--brand-light); color: var(--text-dark); line-height: 1.6; }
-    header { background: var(--brand-dark); color: #fff; padding: 2rem; text-align: center; position: sticky; top: 0; z-index: 10; }
+    header { background: var(--brand-dark); color: #fff; padding: 2rem; text-align: center; position: sticky; top: 0; z-index: 10; height: var(--header-height); }
     header h1 { font-size: 2.5rem; margin-bottom: .5rem; }
     header p { font-size: 1rem; color: #bbb; }
     nav { margin-top: 1rem; }
@@ -25,8 +27,17 @@
     nav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--accent); transition: width .3s ease; }
     nav a:hover { color: var(--accent); }
     nav a:hover::after { width: 100%; }
-    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
+    /* Sections offset for sticky header */
+    section { scroll-margin-top: var(--header-height); max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; position: relative; }
+    /* Highlight animation */
+    @keyframes highlight {
+      from { background-color: var(--highlight-color); }
+      to { background-color: transparent; }
+    }
+    .highlight {
+      animation: highlight 1.5s ease-in-out;
+    }
     /* Contact Info */
     .contact-info { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .95rem; color: var(--text-light); }
     .contact-info div { display: flex; align-items: center; gap: .5rem; }
@@ -143,5 +154,22 @@
   <footer>
     &copy; 2025 Danson Pabalan Aguila. All rights reserved.
   </footer>
+
+  <script>
+    // Add highlight on section header when nav link clicked
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const targetId = link.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        const heading = targetSection.querySelector('h2');
+        if (heading) {
+          heading.classList.remove('highlight');
+          // trigger reflow for restart
+          void heading.offsetWidth;
+          heading.classList.add('highlight');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
