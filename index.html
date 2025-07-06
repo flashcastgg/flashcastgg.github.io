@@ -16,40 +16,55 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Poppins', sans-serif; line-height: 1.6; background: var(--light); color: var(--dark); }
-    header { background: linear-gradient(135deg, var(--primary), var(--secondary)); position: sticky; top: 0; z-index: 100; }
+    header { background: linear-gradient(135deg, var(--primary), var(--secondary)); position: sticky; top: 0; z-index: 100; animation: slideDown .6s ease-out; }
+    @keyframes slideDown { from { transform: translateY(-100%);} to { transform: translateY(0);} }
     nav { display: flex; justify-content: center; padding: 1rem; }
-    nav a { color: #fff; margin: 0 1rem; text-decoration: none; font-weight: 600; position: relative; }
+    nav a { color: #fff; margin: 0 1rem; text-decoration: none; font-weight: 600; position: relative; transition: transform .3s; }
+    nav a:hover { transform: scale(1.1); }
     nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--accent); transition: width .3s; position: absolute; bottom: -4px; left: 0; }
     nav a:hover::after { width: 100%; }
-    section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
-    .hero { text-align: center; color: #fff; background: linear-gradient(135deg, var(--secondary), var(--accent)); padding: 6rem 2rem; }
-    .hero h1 { font-size: 3rem; margin-bottom: .5rem; }
-    .hero p { font-size: 1.2rem; }
+    section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; opacity: 0; transform: translateY(20px); transition: opacity .6s ease-out, transform .6s ease-out; }
+    section.reveal { opacity: 1; transform: translateY(0); }
+    .hero { text-align: center; color: #fff; background: linear-gradient(135deg, var(--secondary), var(--accent)); padding: 6rem 2rem; position: relative; overflow: hidden; }
+    .hero h1 { font-size: 3rem; margin-bottom: .5rem; animation: fadeInUp 1s ease-out .3s forwards; opacity: 0; }
+    .hero p { font-size: 1.2rem; animation: fadeInUp 1s ease-out .6s forwards; opacity: 0; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
     h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
     /* Skills */
     .skills-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
-    .skills-list li { background: #fff; padding: .8rem 1.2rem; border-radius: 50px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); list-style: none; font-weight: 500; }
+    .skills-list li { background: #fff; padding: .8rem 1.2rem; border-radius: 50px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); list-style: none; font-weight: 500; cursor: default; transition: transform .3s, box-shadow .3s; }
+    .skills-list li:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0,0,0,0.15); }
     /* Projects */
     .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-    .project-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform .3s, box-shadow .3s; }
-    .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+    .project-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform .3s, box-shadow .3s; cursor: pointer; }
+    .project-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 12px 25px rgba(0,0,0,0.2); }
     .project-card img { width: 100%; display: block; }
     .project-content { padding: 1.5rem; }
     .project-content h3 { color: var(--secondary); margin-bottom: .5rem; }
     .project-content p { font-size: .95rem; color: #555; }
+    /* Testimonials */
+    .testimonials { background: #fff; border-radius: 12px; padding: 2rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+    .testimonials p { font-style: italic; margin-bottom: 1rem; }
+    .testimonials h4 { color: var(--primary); }
     /* Contact */
-    .contact { text-align: center; background: var(--primary); color: #fff; padding: 3rem 2rem; border-radius: 12px; }
-    .contact a { display: inline-block; margin: .5rem 1rem; padding: .8rem 1.5rem; background: var(--accent); color: #fff; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background .3s; }
-    .contact a:hover { background: var(--secondary); }
+    .contact { text-align: center; background: var(--primary); color: #fff; padding: 3rem 2rem; border-radius: 12px; transition: background .3s; }
+    .contact:hover { background: var(--secondary); }
+    .contact a { display: inline-block; margin: .5rem 1rem; padding: .8rem 1.5rem; background: var(--accent); color: #fff; border-radius: 50px; text-decoration: none; font-weight: 600; transform: translateY(0); transition: background .3s, transform .3s; }
+    .contact a:hover { transform: translateY(-3px); background: var(--dark); }
+    /* Back to Top */
+    #backToTop { position: fixed; bottom: 2rem; right: 2rem; background: var(--accent); color: #fff; padding: .8rem; border-radius: 50%; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.2); display: none; transition: transform .3s; }
+    #backToTop:hover { transform: scale(1.1); }
     footer { text-align: center; padding: 1.5rem; font-size: .9rem; color: #777; }
   </style>
 </head>
 <body>
+  <button id="backToTop" title="Back to top">↑</button>
   <header>
     <nav>
       <a href="#about">About</a>
       <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
+      <a href="#testimonials">Testimonials</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -59,23 +74,23 @@
     <p>Digital Analytics Manager &amp; Web Enthusiast</p>
   </section>
 
-  <section id="about">
+  <section id="about" class="reveal">
     <h2>About Me</h2>
     <p>Hello! I’m a passionate Digital Analytics Manager with expertise in implementing tracking solutions, building interactive dashboards, and driving data-informed design decisions. I love turning complex data into actionable insights.</p>
   </section>
 
-  <section id="skills">
+  <section id="skills" class="reveal">
     <h2>Skills</h2>
     <ul class="skills-list">
       <li>Adobe Analytics</li>
       <li>GA4 &amp; GTM</li>
       <li>Data Visualization</li>
       <li>Agile &amp; Scrum</li>
-      <li>HTML, CSS, JS</li>
+      <li>HTML, CSS, JS
     </ul>
   </section>
 
-  <section id="projects">
+  <section id="projects" class="reveal">
     <h2>Projects</h2>
     <div class="projects">
       <div class="project-card">
@@ -92,11 +107,18 @@
           <p>Led Medallia implementation from staging to UAT, enabling detailed behavioral analytics and PII-safe session recordings.</p>
         </div>
       </div>
-      <!-- Add more cards -->
     </div>
   </section>
 
-  <section id="contact" class="contact">
+  <section id="testimonials" class="reveal">
+    <h2>Testimonials</h2>
+    <div class="testimonials">
+      <p>“Working with [Your Name] was a game-changer—our dashboards have never been clearer or more actionable.”</p>
+      <h4>— UX Lead, Global Brand</h4>
+    </div>
+  </section>
+
+  <section id="contact" class="contact reveal">
     <h2>Get in Touch</h2>
     <p>Let’s collaborate on your next project!</p>
     <a href="mailto:youremail@example.com">Email Me</a>
@@ -106,5 +128,26 @@
   <footer>
     &copy; 2025 Your Name. All rights reserved.
   </footer>
+
+  <script>
+    // Reveal on scroll
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      const triggerPoint = window.innerHeight * 0.8;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < triggerPoint) sec.classList.add('reveal');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Back to top
+    const backBtn = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) backBtn.style.display = 'block'; else backBtn.style.display = 'none';
+    });
+    backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  </script>
 </body>
 </html>
