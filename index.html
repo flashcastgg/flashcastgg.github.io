@@ -15,6 +15,7 @@
       --card-hover-bg: #ccf2ff;
       --text-dark: #333;
       --text-light: #555;
+      --header-height: 4rem;
     }
     html { scroll-behavior: smooth; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,7 +36,12 @@
     nav a::after { content: ''; position: absolute; left: 50%; bottom: -4px; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease, left 0.3s ease; }
     nav a:hover { color: var(--accent); transform: translateY(-2px); }
     nav a:hover::after { width: 100%; left: 0; }
-    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      scroll-margin-top: var(--header-height);
+    }
     h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
     /* Contact Info */
     .contact-info { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .95rem; color: var(--text-light); }
@@ -141,5 +147,31 @@
         <h3>Manager, Digital Insights</h3>
         <span>HSBC GPS — Jan 2012 &ndash; Dec 2018</span>
         <p>Led digital insights team, delivering actionable analytics reports and user behavior analysis to global stakeholders.</p>
-      ))}
-]}
+      </li>
+    </ul>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="education">
+      <li>
+        <strong>Pamantasan ng Lungsod ng Muntinlupa</strong>
+        <span>Bachelor of Science in Computer Science, 2002 &ndash; 2006</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <div><strong>Email:</strong> <a href="mailto:d97i42@gmail.com">d97i42@gmail.com</a></div>
+      <div><strong>Phone:</strong> (+63) 962-4983-532</div>
+      <div><strong>Location:</strong> Biñan, Laguna, Philippines</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Danson Pabalan Aguila. All rights reserved.
+  </footer>
+</body>
+</html>
