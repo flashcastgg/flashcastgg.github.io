@@ -44,58 +44,34 @@
     nav a::after { content: ''; position: absolute; left: 50%; bottom: -4px; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease, left 0.3s ease; }
     nav a:hover { color: var(--accent); transform: translateY(-2px); }
     nav a:hover::after { width: 100%; left: 0; }
-    section {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      scroll-margin-top: calc(var(--header-height) + var(--offset-extra));
-    }
+    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; scroll-margin-top: calc(var(--header-height) + var(--offset-extra)); }
     h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
     .contact-info { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .95rem; color: var(--text-light); }
     .contact-info div { display: flex; align-items: center; gap: .5rem; }
     .summary { background: #fff; padding: 1.5rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
     .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .skills li {
-      background: var(--card-bg);
-      padding: .75rem 1rem;
-      list-style: none;
-      border: 1px solid #e0e0e0;
-      border-radius: 6px;
-      font-size: .9rem;
-      color: var(--text-dark);
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
-    }
-    .skills li:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      border-color: var(--accent);
-      background-color: var(--card-hover-bg);
-    }
+    .skills li { background: var(--card-bg); padding: .75rem 1rem; list-style: none; border: 1px solid #e0e0e0; border-radius: 6px; font-size: .9rem; color: var(--text-dark); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease; }
+    .skills li:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 6px 15px rgba(0,0,0,0.1); border-color: var(--accent); background-color: var(--card-hover-bg); }
     .timeline { list-style: none; position: relative; }
     .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--accent); }
     .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 60px; }
     .timeline-item h3 { font-size: 1.1rem; margin-bottom: .25rem; color: var(--brand-dark); }
-    .timeline-item span { font-size: .9rem; color: var(--text-light); }
-    .timeline-item p { margin-top: .5rem; font-size: .95rem; }
-    .timeline-item::before { content: ''; position: absolute; left: 13px; top: 5px; width: 14px; height: 14px; background: var(--brand-dark); border-radius: 50%; }
+    .timeline-item span { display: block; font-size: .9rem; color: var(--text-light); }
     .education li { margin-bottom: 1rem; }
     .education span { display: block; font-size: .9rem; color: var(--text-light); }
     footer { text-align: center; padding: 1.5rem 0; font-size: .85rem; color: var(--text-light); }
-    @media (max-width: 600px) {
-      header { padding: 1rem 0; }
-      section { scroll-margin-top: calc(100px + var(--offset-extra)); }
-      .contact-info { flex-direction: column; }
-      nav a { display: block; margin: .5rem 0; }
-    }
+    @media (max-width: 600px) { header { padding: 1rem 0; } section { scroll-margin-top: calc(100px + var(--offset-extra)); } .contact-info { flex-direction: column; } nav a { display: block; margin: .5rem 0; } }
   </style>
 </head>
 <body>
   <header>
     <h1>Danson Pabalan Aguila</h1>
-    <p>Senior Manager, Digital Analytics | Adobe & Google MarTech Expert</p>
+    <p>Senior Manager, Digital Analytics | Adobe & Google MarTech Professional</p>
     <nav>
       <a href="#summary">Summary</a>
       <a href="#skills">Skills</a>
+      <a href="#core-competencies">Core Competencies</a>
+      <a href="#martech-skills">Martech Skills</a>
       <a href="#experience">Experience</a>
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
@@ -105,7 +81,7 @@
   <section id="summary">
     <h2>Professional Summary</h2>
     <div class="summary">
-      <p>An accomplished digital analytics and marketing technology professional with extensive expertise in leveraging Adobe and Google analytics suites, alongside advanced proficiency in tag management systems. Demonstrated success in optimizing digital experiences and marketing campaigns through data-driven insights and targeted strategies. Skilled in stakeholder collaboration, technical implementation, data analysis, quality assurance, and operational efficiency.</p>
+      <p>An accomplished digital analytics and marketing technology professional with extensive expertise in leveraging Adobe and Google analytics suites, alongside advanced proficiency in tag management systems like Adobe Launch, Google Tag Manager, and Tealium iQ. Demonstrated success in optimizing digital experiences and marketing campaigns through data-driven insights and targeted strategies. Responsible for enhancing clients' web and mobile experiences through comprehensive analytics design and stakeholder consultation.</p>
     </div>
   </section>
 
@@ -113,13 +89,37 @@
     <h2>Skills &amp; Martech Stack</h2>
     <ul class="skills">
       <li>HTML, CSS, JavaScript</li>
-      <li>Adobe Analytics, Target, Launch, Data Warehouse</li>
-      <li>Google Analytics 4, GTM, Search Console</li>
-      <li>Tealium iQ, SessionCam, Glassbox</li>
-      <li>Tableau, PowerBI, Looker, Medallia DXA</li>
-      <li>MySQL, REST API, VB.net, VBA</li>
-      <li>JIRA, Confluence, SharePoint, Wrike</li>
-      <li>SemRush, ObservePoint, BrightEdge</li>
+      <li>Adobe Analytics, Target, Launch, Data Warehouse, Report Builder</li>
+      <li>Google Analytics, Google Analytics 4, Optimize, Tag Manager, Search Console</li>
+      <li>Tealium iQ, SessionCam, Glassbox, BrightEdge, Contentsquare, HEAP</li>
+      <li>Qualtrics, Tableau, PowerBI, Looker, Medallia DXA</li>
+      <li>VB.net, VBA, Macro Programming, MySQL, REST API, Nintex Workflow</li>
+      <li>SemRush, ObservePoint, Visible Thread, JIRA, Confluence, Wrike</li>
+    </ul>
+  </section>
+
+  <section id="core-competencies">
+    <h2>Core Competencies</h2>
+    <ul class="competencies">
+      <li>Stakeholder Collaboration – Identifying optimization opportunities and translating business needs into technical solutions in partnership with internal teams fileciteturn1file1</li>
+      <li>Technical Implementation – Designing data collection architectures, coding, testing, and validating analytics and marketing tags fileciteturn1file1</li>
+      <li>Data Analysis &amp; Insights – Analyzing multi-source data to extract actionable insights, dashboard creation, and reporting trends and customer behaviors fileciteturn1file1</li>
+      <li>Quality &amp; Compliance – Conducting audits, enforcing tracking standards, and ensuring adherence to corporate and regulatory policies fileciteturn1file1</li>
+      <li>Optimization &amp; Testing – Leading A/B and multivariate testing, personalization strategies, and continuous performance improvements fileciteturn1file1</li>
+      <li>Training &amp; Development – Developing and delivering training on web standards, analytics tools, and best practices, with ongoing coaching and performance evaluation fileciteturn1file1</li>
+      <li>Operational Efficiency – Managing workflows, fostering compliance culture, and optimizing processes to meet delivery and quality targets fileciteturn1file1</li>
+    </ul>
+  </section>
+
+  <section id="martech-skills">
+    <h2>Martech Skills</h2>
+    <ul class="martech-skills">
+      <li><strong>Adobe Analytics:</strong> Proficient in utilizing Adobe Analytics to measure, analyze, and optimize digital marketing efforts and user experiences. Skilled in creating custom reports, segments, and dashboards to extract actionable insights and drive strategic decision-making.</li>
+      <li><strong>Adobe Target:</strong> Experienced in implementing and managing Adobe Target for A/B testing, personalization, and optimization initiatives. Capable of designing and executing sophisticated targeting strategies to enhance user engagement and conversion rates.</li>
+      <li><strong>Adobe Launch / Data Collection:</strong> Expertise in Adobe Launch for seamless tag management and data collection across digital properties. Skilled in deploying and managing tags, ensuring accurate data capture for comprehensive analytics and marketing attribution.</li>
+      <li><strong>Google Analytics / GA4:</strong> Proficient in leveraging Google Analytics and Google Analytics 4 to track website traffic, user behavior, and conversion metrics. Experienced in configuring custom dimensions, events, and goals to capture relevant data for performance analysis and optimization.</li>
+      <li><strong>Google Tag Manager:</strong> Skilled in implementing and managing Google Tag Manager setups for streamlined tag deployment and data collection. Experienced in configuring triggers, variables, and tags to enable advanced tracking and measurement capabilities.</li>
+      <li><strong>Tealium iQ:</strong> Competent in utilizing Tealium iQ for tag management and data enrichment, ensuring accurate and comprehensive data collection for analytics and marketing purposes. Capable of orchestrating complex data flows and integrations across diverse digital platforms.</li>
     </ul>
   </section>
 
@@ -128,28 +128,28 @@
     <ul class="timeline">
       <li class="timeline-item">
         <h3>Senior Manager, Digital Analytics</h3>
-        <span>Sun Life Financial — October 2024 &ndash; Present</span>
-        <p>Lead regional digital analytics for Asia Experience Design office. Drive strategy for analytics implementation, dashboard development, and data-driven decision-making across web and client applications.</p>
+        <span>October 2024 — Present</span>
+        <span>Experience Design (Regional Office | Asia) – Sun Life Financial</span>
       </li>
       <li class="timeline-item">
         <h3>Digital Analyst</h3>
-        <span>ProSource BPO / iSelect — Nov 2023 &ndash; Sep 2024</span>
-        <p>Managed analytics tagging, reporting, and insights delivery for BPO clients. Streamlined data workflows and enhanced reporting accuracy.</p>
+        <span>November 2023 — September 2024</span>
+        <span>ProSource BPO / iSelect</span>
       </li>
       <li class="timeline-item">
         <h3>Manager, MarTech</h3>
-        <span>HSBC DPS — Jan 2022 &ndash; Nov 2023</span>
-        <p>Oversaw marketing technology stack, including Adobe Launch and Google Tag Manager. Implemented A/B testing and personalization strategies.</p>
+        <span>January 2022 — November 2023</span>
+        <span>Digital Production Services (DPS) – HSBC Electronic Data Processing Philippines, Inc.</span>
       </li>
       <li class="timeline-item">
         <h3>Senior Manager, Digital Analytics</h3>
-        <span>Sun Life Financial — Jan 2019 &ndash; Dec 2022</span>
-        <p>Directed enterprise analytics initiatives, stakeholder coaching, and quality assurance processes for digital channels.</p>
+        <span>January 2019 — December 2022</span>
+        <span>Digital Marketing (Regional Office | Asia) – Sun Life Financial</span>
       </li>
       <li class="timeline-item">
         <h3>Manager, Digital Insights</h3>
-        <span>HSBC GPS — Jan 2012 &ndash; Dec 2018</span>
-        <p>Led digital insights team, delivering actionable analytics reports and user behavior analysis to global stakeholders.</p>
+        <span>January 2012 — December 2018</span>
+        <span>Global Publishing Services (GPS) – HSBC Electronic Data Processing Philippines, Inc.</span>
       </li>
     </ul>
   </section>
@@ -159,7 +159,7 @@
     <ul class="education">
       <li>
         <strong>Pamantasan ng Lungsod ng Muntinlupa</strong>
-        <span>Bachelor of Science in Computer Science, 2002 &ndash; 2006</span>
+        <span>Bachelor of Science in Computer Science, 2002 — 2006</span>
       </li>
     </ul>
   </section>
