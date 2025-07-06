@@ -17,8 +17,8 @@
       --card-hover-bg: #ccf2ff;
       --text-dark: #333;
       --text-light: #555;
-      --header-height: 80px; /* used for scroll offset */
-      --offset-extra: 3px; /* extra gap above sections */
+      --header-height: 80px;
+      --offset-extra: 3px;
     }
     html { scroll-behavior: smooth; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,16 +48,12 @@
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
-      /* offset anchor by header height + extra */
       scroll-margin-top: calc(var(--header-height) + var(--offset-extra));
     }
     h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
-    /* Contact Info */
     .contact-info { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .95rem; color: var(--text-light); }
     .contact-info div { display: flex; align-items: center; gap: .5rem; }
-    /* Summary */
     .summary { background: #fff; padding: 1.5rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
-    /* Skills */
     .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
     .skills li {
       background: var(--card-bg);
@@ -75,7 +71,6 @@
       border-color: var(--accent);
       background-color: var(--card-hover-bg);
     }
-    /* Timeline */
     .timeline { list-style: none; position: relative; }
     .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--accent); }
     .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 60px; }
@@ -83,12 +78,9 @@
     .timeline-item span { font-size: .9rem; color: var(--text-light); }
     .timeline-item p { margin-top: .5rem; font-size: .95rem; }
     .timeline-item::before { content: ''; position: absolute; left: 13px; top: 5px; width: 14px; height: 14px; background: var(--brand-dark); border-radius: 50%; }
-    /* Education */
     .education li { margin-bottom: 1rem; }
     .education span { display: block; font-size: .9rem; color: var(--text-light); }
-    /* Footer */
     footer { text-align: center; padding: 1.5rem 0; font-size: .85rem; color: var(--text-light); }
-    /* Responsive */
     @media (max-width: 600px) {
       header { padding: 1rem 0; }
       section { scroll-margin-top: calc(100px + var(--offset-extra)); }
@@ -109,7 +101,78 @@
       <a href="#contact">Contact</a>
     </nav>
   </header>
-  <!-- ... rest of body ... -->
+
+  <section id="summary">
+    <h2>Professional Summary</h2>
+    <div class="summary">
+      <p>An accomplished digital analytics and marketing technology professional with extensive expertise in leveraging Adobe and Google analytics suites, alongside advanced proficiency in tag management systems. Demonstrated success in optimizing digital experiences and marketing campaigns through data-driven insights and targeted strategies. Skilled in stakeholder collaboration, technical implementation, data analysis, quality assurance, and operational efficiency.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills &amp; Martech Stack</h2>
+    <ul class="skills">
+      <li>HTML, CSS, JavaScript</li>
+      <li>Adobe Analytics, Target, Launch, Data Warehouse</li>
+      <li>Google Analytics 4, GTM, Search Console</li>
+      <li>Tealium iQ, SessionCam, Glassbox</li>
+      <li>Tableau, PowerBI, Looker, Medallia DXA</li>
+      <li>MySQL, REST API, VB.net, VBA</li>
+      <li>JIRA, Confluence, SharePoint, Wrike</li>
+      <li>SemRush, ObservePoint, BrightEdge</li>
+    </ul>
+  </section>
+
+  <section id="experience">
+    <h2>Work Experience</h2>
+    <ul class="timeline">
+      <li class="timeline-item">
+        <h3>Senior Manager, Digital Analytics</h3>
+        <span>Sun Life Financial — October 2024 &ndash; Present</span>
+        <p>Lead regional digital analytics for Asia Experience Design office. Drive strategy for analytics implementation, dashboard development, and data-driven decision-making across web and client applications.</p>
+      </li>
+      <li class="timeline-item">
+        <h3>Digital Analyst</h3>
+        <span>ProSource BPO / iSelect — Nov 2023 &ndash; Sep 2024</span>
+        <p>Managed analytics tagging, reporting, and insights delivery for BPO clients. Streamlined data workflows and enhanced reporting accuracy.</p>
+      </li>
+      <li class="timeline-item">
+        <h3>Manager, MarTech</h3>
+        <span>HSBC DPS — Jan 2022 &ndash; Nov 2023</span>
+        <p>Oversaw marketing technology stack, including Adobe Launch and Google Tag Manager. Implemented A/B testing and personalization strategies.</p>
+      </li>
+      <li class="timeline-item">
+        <h3>Senior Manager, Digital Analytics</h3>
+        <span>Sun Life Financial — Jan 2019 &ndash; Dec 2022</span>
+        <p>Directed enterprise analytics initiatives, stakeholder coaching, and quality assurance processes for digital channels.</p>
+      </li>
+      <li class="timeline-item">
+        <h3>Manager, Digital Insights</h3>
+        <span>HSBC GPS — Jan 2012 &ndash; Dec 2018</span>
+        <p>Led digital insights team, delivering actionable analytics reports and user behavior analysis to global stakeholders.</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="education">
+      <li>
+        <strong>Pamantasan ng Lungsod ng Muntinlupa</strong>
+        <span>Bachelor of Science in Computer Science, 2002 &ndash; 2006</span>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <div><strong>Email:</strong> <a href="mailto:d97i42@gmail.com">d97i42@gmail.com</a></div>
+      <div><strong>Phone:</strong> (+63) 962-4983-532</div>
+      <div><strong>Location:</strong> Biñan, Laguna, Philippines</div>
+    </div>
+  </section>
+
   <footer>
     &copy; 2025 Danson Pabalan Aguila. All rights reserved.
   </footer>
@@ -121,7 +184,6 @@
         e.preventDefault();
         const targetId = link.getAttribute('href').substring(1);
         const target = document.getElementById(targetId);
-        // find previous section or fallback to top
         let prev = target.previousElementSibling;
         while (prev && prev.tagName.toLowerCase() !== 'section') {
           prev = prev.previousElementSibling;
