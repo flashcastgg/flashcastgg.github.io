@@ -3,37 +3,118 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My GitHub Pages Site</title>
+  <title>Digital Marketing 101</title>
+  <style>
+    /* Basic reset */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    a { text-decoration: none; color: #333; }
+    img { max-width: 100%; display: block; }
 
-  <!-- ———————— GOOGLE TAG MANAGER (HEAD) ———————— -->
-  <!-- Paste your GTM head snippet here, e.g.
-  <script>
-    (function(w,d,s,l,i){…})(window,document,'script','dataLayer','GTM-XXXXXX');
-  </script>
-  -->
+    /* Navigation */
+    nav { background: #004A99; padding: 0.5rem 1rem; }
+    nav ul { display: flex; list-style: none; justify-content: center; }
+    nav li { margin: 0 1rem; }
+    nav a { color: #fff; font-weight: bold; }
+
+    /* Sections */
+    section { padding: 2rem 1rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+
+    /* Hero */
+    #hero { background: #f4f4f4; text-align: center; }
+    #hero h1 { margin-bottom: 0.5rem; }
+    #hero p { margin-bottom: 1rem; }
+
+    /* Grid for Services */
+    .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media(min-width: 600px) {
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* Footer */
+    footer { background: #222; color: #ccc; text-align: center; padding: 1rem; font-size: 0.9rem; }
+  </style>
 </head>
 <body>
-  <!-- ———————— GOOGLE TAG MANAGER (BODY) ———————— -->
-  <!-- Paste your GTM body snippet here, e.g.
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXX"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
-  -->
 
-  <header>
-    <h1>Welcome to My Site</h1>
-  </header>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#blog">Blog</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-  <main>
-    <p>
-      This is a single-file GitHub Pages site. Whenever you need to update
-      content or swap GTM code, just edit this file in GitHub and commit.
-    </p>
-  </main>
+  <!-- Hero Section -->
+  <section id="hero">
+    <div class="container">
+      <h1>Welcome to Digital Marketing 101</h1>
+      <p>Your one-stop primer on how to grow your brand online.</p>
+      <img src="https://source.unsplash.com/900x300/?marketing,online" alt="Digital Marketing">
+    </div>
+  </section>
 
+  <!-- Services Section -->
+  <section id="services">
+    <div class="container">
+      <h2>Our Core Services</h2>
+      <div class="grid">
+        <div>
+          <img src="https://source.unsplash.com/400x300/?seo" alt="SEO">
+          <h3>Search Engine Optimization</h3>
+          <p>Improve your site’s visibility on Google and drive organic traffic with best-practice SEO strategies.</p>
+        </div>
+        <div>
+          <img src="https://source.unsplash.com/400x300/?ppc,ads" alt="PPC Advertising">
+          <h3>PPC Advertising</h3>
+          <p>Maximize ROI with targeted Google Ads and social media campaigns that reach customers at the right moment.</p>
+        </div>
+        <div>
+          <img src="https://source.unsplash.com/400x300/?content,marketing" alt="Content Marketing">
+          <h3>Content Marketing</h3>
+          <p>Engage and educate your audience through blog posts, videos, and infographics tailored to your industry.</p>
+        </div>
+        <div>
+          <img src="https://source.unsplash.com/400x300/?email,newsletter" alt="Email Marketing">
+          <h3>Email Marketing</h3>
+          <p>Build loyalty and drive conversions with segmented email campaigns and automated workflows.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog">
+    <div class="container">
+      <h2>Latest Insights</h2>
+      <article style="margin-bottom:2rem;">
+        <h3>5 SEO Trends to Watch in 2025</h3>
+        <p>Stay ahead of the curve with emerging techniques like AI-driven keyword research, Core Web Vitals optimization, and voice search readiness.</p>
+        <a href="#">Read more →</a>
+      </article>
+      <article>
+        <h3>How to Craft High-Converting Landing Pages</h3>
+        <p>Learn the anatomy of a landing page that converts—clear headlines, trust signals, and friction-free CTAs.</p>
+        <a href="#">Read more →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <p>Have questions or want to launch a campaign? Email us at <a href="mailto:info@example.com">info@example.com</a>.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
   <footer>
-    <p>© 2025 Your Name</p>
+    <p>© 2025 Digital Marketing 101. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
