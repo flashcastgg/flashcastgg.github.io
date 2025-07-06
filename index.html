@@ -16,13 +16,22 @@
       --text-dark: #333;
       --text-light: #555;
     }
+    html { scroll-behavior: smooth; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Montserrat', sans-serif; background: var(--brand-light); color: var(--text-dark); line-height: 1.6; }
-    header { background: var(--brand-dark); color: #fff; padding: 2rem; text-align: center; }
-    header h1 { font-size: 2.5rem; margin-bottom: .5rem; }
-    header p { font-size: 1rem; color: #bbb; }
-    nav { margin-top: 1rem; }
-    nav a { color: #fff; margin: 0 .75rem; text-decoration: none; font-weight: 600; position: relative; transition: color 0.3s ease, transform 0.3s ease; }
+    header {
+      background: var(--brand-dark);
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 { font-size: 2rem; margin-bottom: .3rem; }
+    header p { font-size: .9rem; color: #bbb; }
+    nav { margin-top: .5rem; }
+    nav a { color: #fff; margin: 0 .5rem; text-decoration: none; font-weight: 600; position: relative; transition: color 0.3s ease, transform 0.3s ease; }
     nav a::after { content: ''; position: absolute; left: 50%; bottom: -4px; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease, left 0.3s ease; }
     nav a:hover { color: var(--accent); transform: translateY(-2px); }
     nav a:hover::after { width: 100%; left: 0; }
@@ -132,31 +141,5 @@
         <h3>Manager, Digital Insights</h3>
         <span>HSBC GPS — Jan 2012 &ndash; Dec 2018</span>
         <p>Led digital insights team, delivering actionable analytics reports and user behavior analysis to global stakeholders.</p>
-      </li>
-    </ul>
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
-    <ul class="education">
-      <li>
-        <strong>Pamantasan ng Lungsod ng Muntinlupa</strong>
-        <span>Bachelor of Science in Computer Science, 2002 &ndash; 2006</span>
-      </li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Information</h2>
-    <div class="contact-info">
-      <div><strong>Email:</strong> <a href="mailto:d97i42@gmail.com">d97i42@gmail.com</a></div>
-      <div><strong>Phone:</strong> (+63) 962-4983-532</div>
-      <div><strong>Location:</strong> Biñan, Laguna, Philippines</div>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Danson Pabalan Aguila. All rights reserved.
-  </footer>
-</body>
-</html>
+      ))}
+]}
