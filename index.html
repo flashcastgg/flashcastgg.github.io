@@ -16,6 +16,7 @@
       --text-dark: #333;
       --text-light: #555;
       --header-height: 80px; /* used for scroll offset */
+      --offset-extra: 3px; /* extra gap above sections */
     }
     html { scroll-behavior: smooth; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -32,7 +33,6 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      /* optional shadow to separate */
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
     header h1 { font-size: 1.8rem; margin-bottom: .3rem; }
@@ -46,7 +46,8 @@
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
-      scroll-margin-top: var(--header-height);
+      /* offset anchor by header height + extra */
+      scroll-margin-top: calc(var(--header-height) + var(--offset-extra));
     }
     h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
     /* Contact Info */
@@ -88,7 +89,7 @@
     /* Responsive */
     @media (max-width: 600px) {
       header { padding: 1rem 0; }
-      section { scroll-margin-top: 100px; }
+      section { scroll-margin-top: calc(100px + var(--offset-extra)); }
       .contact-info { flex-direction: column; }
       nav a { display: block; margin: .5rem 0; }
     }
