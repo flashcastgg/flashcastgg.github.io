@@ -182,5 +182,26 @@
   <footer>
     &copy; 2025 Danson Pabalan Aguila. All rights reserved.
   </footer>
+  <script>
+    const header = document.querySelector('header');
+    const headerHeight = header.offsetHeight;
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        // find previous section or fallback to top
+        let prev = target.previousElementSibling;
+        while (prev && prev.tagName.toLowerCase() !== 'section') {
+          prev = prev.previousElementSibling;
+        }
+        let scrollPos = 0;
+        if (prev) {
+          scrollPos = prev.offsetTop + prev.offsetHeight - headerHeight;
+        }
+        window.scrollTo({ top: scrollPos, behavior: 'smooth' });
+      });
+    });
+  </script>
 </body>
 </html>
