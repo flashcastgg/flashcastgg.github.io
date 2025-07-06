@@ -13,42 +13,94 @@
       --accent: #0066cc;
       --text-dark: #333;
       --text-light: #555;
+      --header-height: 100px;
+      --highlight-color: rgba(255, 235, 59, 0.5);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body { font-family: 'Montserrat', sans-serif; background: var(--brand-light); color: var(--text-dark); line-height: 1.6; }
-    header { background: var(--brand-dark); color: #fff; padding: 2rem; text-align: center; }
-    header h1 { font-size: 2.5rem; margin-bottom: .5rem; }
-    header p { font-size: 1rem; color: #bbb; }
-    nav { margin-top: 1rem; }
-    nav a { color: #fff; margin: 0 .75rem; text-decoration: none; font-weight: 600; }
-    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
-    /* Contact Info */
-    .contact-info { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .95rem; color: var(--text-light); }
-    .contact-info div { display: flex; align-items: center; gap: .5rem; }
-    /* Summary */
+    header { background: var(--brand-dark); color: #fff; padding: 1rem; position: sticky; top: 0; z-index: 100; }
+    header h1 { font-size: 2rem; }
+    header p { font-size: 1rem; opacity: 0.8; }
+    nav {
+      display: flex;
+      justify-content: center;
+      margin-top: .5rem;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 .75rem;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      padding: .25rem;
+      transition: color .3s ease, transform .3s ease;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width .3s ease;
+    }
+    nav a:hover {
+      color: var(--accent);
+      transform: translateY(-2px) scale(1.1);
+    }
+    nav a:hover::after { width: 100%; }
+
+    /* Add hover bounce keyframe */
+    @keyframes pulse {
+      0% { transform: translateY(-2px) scale(1.05); }
+      50% { transform: translateY(-4px) scale(1.07); }
+      100% { transform: translateY(-2px) scale(1.05); }
+    }
+
+    section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; scroll-margin-top: var(--header-height); }
+    h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; position: relative; }
+    @keyframes highlight { from { background: var(--highlight-color); } to { background: transparent; } }
+    .highlight { animation: highlight 1.5s ease-in-out; }
+
     .summary { background: #fff; padding: 1.5rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
-    /* Skills */
+
     .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .skills li { background: #fff; padding: .75rem 1rem; list-style: none; border: 1px solid #e0e0e0; border-radius: 6px; font-size: .9rem; color: var(--text-light); }
-    /* Timeline */
-    .timeline { list-style: none; position: relative; }
+    .skills li {
+      background: #fff;
+      padding: .75rem 1rem;
+      list-style: none;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: .9rem;
+      color: var(--text-light);
+      transition: transform .3s, box-shadow .3s, background .3s, color .3s;
+      cursor: pointer;
+    }
+    .skills li:hover {
+      animation: pulse .6s ease-in-out;
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .timeline { list-style: none; position: relative; padding-left: 2rem; }
     .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--accent); }
-    .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 60px; }
+    .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 40px; }
     .timeline-item h3 { font-size: 1.1rem; margin-bottom: .25rem; color: var(--brand-dark); }
     .timeline-item span { font-size: .9rem; color: var(--text-light); }
     .timeline-item p { margin-top: .5rem; font-size: .95rem; }
-    .timeline-item::before { content: ''; position: absolute; left: 13px; top: 5px; width: 14px; height: 14px; background: var(--brand-dark); border-radius: 50%; }
-    /* Education */
+    .timeline-item::before { content: ''; position: absolute; left: 13px; top: 8px; width: 14px; height: 14px; background: var(--brand-dark); border-radius: 50%; }
+
     .education li { margin-bottom: 1rem; }
     .education span { display: block; font-size: .9rem; color: var(--text-light); }
-    /* Footer */
+
+    .contact-info { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .95rem; color: var(--text-light); }
+
     footer { text-align: center; padding: 1.5rem 0; font-size: .85rem; color: var(--text-light); }
-    /* Responsive */
-    @media (max-width: 600px) {
-      .contact-info { flex-direction: column; }
-      nav a { display: block; margin: .5rem 0; }
-    }
+
+    @media (max-width: 600px) { nav a { display: block; margin: .5rem 0; } }
   </style>
 </head>
 <body>
@@ -119,10 +171,7 @@
   <section id="education">
     <h2>Education</h2>
     <ul class="education">
-      <li>
-        <strong>Pamantasan ng Lungsod ng Muntinlupa</strong>
-        <span>Bachelor of Science in Computer Science, 2002 &ndash; 2006</span>
-      </li>
+      <li><strong>Pamantasan ng Lungsod ng Muntinlupa</strong><br><span>Bachelor of Science in Computer Science, 2002 &ndash; 2006</span></li>
     </ul>
   </section>
 
