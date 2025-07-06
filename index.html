@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Your Name | Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
-    header { background: #333; color: #fff; padding: 20px 0; position: sticky; top: 0; z-index: 100; }
-    nav { display: flex; justify-content: center; gap: 20px; }
-    nav a { color: #fff; text-decoration: none; font-weight: bold; }
-    section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
-    .hero { text-align: center; background: #f4f4f4; padding: 100px 20px; }
-    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .project-card { background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .project-card img { width: 100%; height: auto; }
-    .project-content { padding: 20px; }
-    footer { background: #333; color: #fff; text-align: center; padding: 20px 0; }
-    .contact-links a { color: #fff; margin: 0 10px; text-decoration: none; }
+    :root {
+      --primary: #007bff;
+      --secondary: #ff4081;
+      --accent: #00e5ff;
+      --light: #f9f9f9;
+      --dark: #222;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; line-height: 1.6; background: var(--light); color: var(--dark); }
+    header { background: linear-gradient(135deg, var(--primary), var(--secondary)); position: sticky; top: 0; z-index: 100; }
+    nav { display: flex; justify-content: center; padding: 1rem; }
+    nav a { color: #fff; margin: 0 1rem; text-decoration: none; font-weight: 600; position: relative; }
+    nav a::after { content: ''; display: block; width: 0; height: 2px; background: var(--accent); transition: width .3s; position: absolute; bottom: -4px; left: 0; }
+    nav a:hover::after { width: 100%; }
+    section { padding: 4rem 2rem; max-width: 1000px; margin: 0 auto; }
+    .hero { text-align: center; color: #fff; background: linear-gradient(135deg, var(--secondary), var(--accent)); padding: 6rem 2rem; }
+    .hero h1 { font-size: 3rem; margin-bottom: .5rem; }
+    .hero p { font-size: 1.2rem; }
+    h2 { text-align: center; font-size: 2.5rem; margin-bottom: 1rem; color: var(--primary); }
+    /* Skills */
+    .skills-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .skills-list li { background: #fff; padding: .8rem 1.2rem; border-radius: 50px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); list-style: none; font-weight: 500; }
+    /* Projects */
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .project-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform .3s, box-shadow .3s; }
+    .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+    .project-card img { width: 100%; display: block; }
+    .project-content { padding: 1.5rem; }
+    .project-content h3 { color: var(--secondary); margin-bottom: .5rem; }
+    .project-content p { font-size: .95rem; color: #555; }
+    /* Contact */
+    .contact { text-align: center; background: var(--primary); color: #fff; padding: 3rem 2rem; border-radius: 12px; }
+    .contact a { display: inline-block; margin: .5rem 1rem; padding: .8rem 1.5rem; background: var(--accent); color: #fff; border-radius: 50px; text-decoration: none; font-weight: 600; transition: background .3s; }
+    .contact a:hover { background: var(--secondary); }
+    footer { text-align: center; padding: 1.5rem; font-size: .9rem; color: #777; }
   </style>
 </head>
 <body>
@@ -29,24 +54,24 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero" id="home">
     <h1>Your Name</h1>
-    <p>Digital Analytics Manager & Web Portfolio</p>
+    <p>Digital Analytics Manager &amp; Web Enthusiast</p>
   </section>
 
   <section id="about">
     <h2>About Me</h2>
-    <p>Introduce yourself here. Briefly describe your background, experience in web analytics, and passions.</p>
+    <p>Hello! I’m a passionate Digital Analytics Manager with expertise in implementing tracking solutions, building interactive dashboards, and driving data-informed design decisions. I love turning complex data into actionable insights.</p>
   </section>
 
   <section id="skills">
     <h2>Skills</h2>
-    <ul>
-      <li>Adobe Analytics Implementation</li>
-      <li>Google Analytics & Tag Management</li>
-      <li>Data Visualization & Dashboarding</li>
-      <li>Scrum & Agile Methodologies</li>
-      <li>HTML, CSS, JavaScript</li>
+    <ul class="skills-list">
+      <li>Adobe Analytics</li>
+      <li>GA4 &amp; GTM</li>
+      <li>Data Visualization</li>
+      <li>Agile &amp; Scrum</li>
+      <li>HTML, CSS, JS</li>
     </ul>
   </section>
 
@@ -54,35 +79,32 @@
     <h2>Projects</h2>
     <div class="projects">
       <div class="project-card">
-        <img src="https://via.placeholder.com/400x200" alt="Project Image" />
+        <img src="https://via.placeholder.com/600x350" alt="Project 1">
         <div class="project-content">
-          <h3>Project Title 1</h3>
-          <p>Short description of the project, your role, and key outcomes.</p>
+          <h3>Experience Dashboard</h3>
+          <p>Developed a dynamic Adobe Analytics dashboard for web and client apps, providing real-time UX insights across multiple markets.</p>
         </div>
       </div>
       <div class="project-card">
-        <img src="https://via.placeholder.com/400x200" alt="Project Image" />
+        <img src="https://via.placeholder.com/600x350" alt="Project 2">
         <div class="project-content">
-          <h3>Project Title 2</h3>
-          <p>Short description of the project, your role, and key outcomes.</p>
+          <h3>Medallia Onboarding</h3>
+          <p>Led Medallia implementation from staging to UAT, enabling detailed behavioral analytics and PII-safe session recordings.</p>
         </div>
       </div>
-      <!-- Add more project cards as needed -->
+      <!-- Add more cards -->
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Feel free to reach out:</p>
-    <div class="contact-links">
-      <a href="mailto:youremail@example.com">Email</a>
-      <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
-      <!-- Add more links if desired -->
-    </div>
+  <section id="contact" class="contact">
+    <h2>Get in Touch</h2>
+    <p>Let’s collaborate on your next project!</p>
+    <a href="mailto:youremail@example.com">Email Me</a>
+    <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
   </section>
 
   <footer>
-    <p>&copy; 2025 Your Name. All rights reserved.</p>
+    &copy; 2025 Your Name. All rights reserved.
   </footer>
 </body>
 </html>
