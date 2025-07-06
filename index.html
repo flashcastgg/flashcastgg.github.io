@@ -15,7 +15,8 @@
       --card-hover-bg: #ccf2ff;
       --text-dark: #333;
       --text-light: #555;
-      --header-height: 4rem;
+      /* Increase to match actual header height */
+      --header-height: 6rem;
     }
     html { scroll-behavior: smooth; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -28,10 +29,15 @@
       position: sticky;
       top: 0;
       z-index: 1000;
+      /* ensure header occupies consistent height */
+      height: var(--header-height);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
-    header h1 { font-size: 2rem; margin-bottom: .3rem; }
+    header h1 { font-size: 2rem; margin-bottom: .2rem; }
     header p { font-size: .9rem; color: #bbb; }
-    nav { margin-top: .5rem; }
+    nav { margin-top: .3rem; }
     nav a { color: #fff; margin: 0 .5rem; text-decoration: none; font-weight: 600; position: relative; transition: color 0.3s ease, transform 0.3s ease; }
     nav a::after { content: ''; position: absolute; left: 50%; bottom: -4px; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease, left 0.3s ease; }
     nav a:hover { color: var(--accent); transform: translateY(-2px); }
@@ -40,6 +46,7 @@
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
+      /* offset anchor by header height */
       scroll-margin-top: var(--header-height);
     }
     h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; }
@@ -81,6 +88,8 @@
     footer { text-align: center; padding: 1.5rem 0; font-size: .85rem; color: var(--text-light); }
     /* Responsive */
     @media (max-width: 600px) {
+      header { height: auto; padding: 1rem 0; }
+      section { scroll-margin-top: 8rem; }
       .contact-info { flex-direction: column; }
       nav a { display: block; margin: .5rem 0; }
     }
