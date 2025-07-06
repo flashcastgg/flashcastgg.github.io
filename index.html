@@ -17,50 +17,110 @@
       --highlight-color: rgba(255, 235, 59, 0.5);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--header-height);
+    }
     body { font-family: 'Montserrat', sans-serif; background: var(--brand-light); color: var(--text-dark); line-height: 1.6; }
-    header { background: var(--brand-dark); color: #fff; padding: 2rem; text-align: center; position: sticky; top: 0; z-index: 10; height: var(--header-height); }
+    header {
+      background: var(--brand-dark);
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
     header h1 { font-size: 2.5rem; margin-bottom: .5rem; }
     header p { font-size: 1rem; color: #bbb; }
     nav { margin-top: 1rem; }
-    nav a { color: #fff; margin: 0 .75rem; text-decoration: none; font-weight: 600; position: relative; padding: .25rem; transition: color .3s ease; }
-    nav a::after { content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 2px; background: var(--accent); transition: width .3s ease; }
+    nav a {
+      color: #fff;
+      margin: 0 .75rem;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      padding: .25rem;
+      transition: color .3s ease;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width .3s ease;
+    }
     nav a:hover { color: var(--accent); }
     nav a:hover::after { width: 100%; }
-    /* Sections offset for sticky header */
-    section { scroll-margin-top: var(--header-height); max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-    h2 { font-size: 1.8rem; color: var(--brand-dark); margin-bottom: 1rem; border-bottom: 2px solid var(--accent); padding-bottom: .5rem; position: relative; }
-    /* Highlight animation */
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      font-size: 1.8rem;
+      color: var(--brand-dark);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: .5rem;
+      position: relative;
+    }
     @keyframes highlight {
       from { background-color: var(--highlight-color); }
       to { background-color: transparent; }
     }
-    .highlight {
-      animation: highlight 1.5s ease-in-out;
-    }
-    /* Contact Info */
+    .highlight { animation: highlight 1.5s ease-in-out; }
     .contact-info { display: flex; flex-wrap: wrap; gap: 1rem; font-size: .95rem; color: var(--text-light); }
     .contact-info div { display: flex; align-items: center; gap: .5rem; }
-    /* Summary */
     .summary { background: #fff; padding: 1.5rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
-    /* Skills */
     .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .skills li { background: #fff; padding: .75rem 1rem; list-style: none; border: 1px solid #e0e0e0; border-radius: 6px; font-size: .9rem; color: var(--text-light); transition: transform .3s ease, box-shadow .3s ease, background .3s ease; cursor: pointer; }
-    .skills li:hover { transform: translateY(-5px) scale(1.03); box-shadow: 0 8px 20px rgba(0,0,0,0.1); background: var(--accent); color: #fff; }
-    /* Timeline */
+    .skills li {
+      background: #fff;
+      padding: .75rem 1rem;
+      list-style: none;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: .9rem;
+      color: var(--text-light);
+      transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+      cursor: pointer;
+    }
+    .skills li:hover {
+      transform: translateY(-5px) scale(1.03);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      background: var(--accent);
+      color: #fff;
+    }
     .timeline { list-style: none; position: relative; padding-left: 2rem; }
-    .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--accent); }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent);
+    }
     .timeline-item { position: relative; margin-bottom: 2rem; padding-left: 40px; }
     .timeline-item h3 { font-size: 1.1rem; margin-bottom: .25rem; color: var(--brand-dark); }
     .timeline-item span { font-size: .9rem; color: var(--text-light); }
     .timeline-item p { margin-top: .5rem; font-size: .95rem; }
-    .timeline-item::before { content: ''; position: absolute; left: 13px; top: 5px; width: 14px; height: 14px; background: var(--brand-dark); border-radius: 50%; }
-    /* Education */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 13px;
+      top: 5px;
+      width: 14px;
+      height: 14px;
+      background: var(--brand-dark);
+      border-radius: 50%;
+    }
     .education li { margin-bottom: 1rem; }
     .education span { display: block; font-size: .9rem; color: var(--text-light); }
-    /* Footer */
     footer { text-align: center; padding: 1.5rem 0; font-size: .85rem; color: var(--text-light); }
-    /* Responsive */
     @media (max-width: 600px) {
       .contact-info { flex-direction: column; }
       nav a { display: block; margin: .5rem 0; }
@@ -120,56 +180,4 @@
         <p>Oversaw marketing technology stack, including Adobe Launch and Google Tag Manager. Implemented A/B testing and personalization strategies.</p>
       </li>
       <li class="timeline-item">
-        <h3>Senior Manager, Digital Analytics</h3>
-        <span>Sun Life Financial — Jan 2019 &ndash; Dec 2022</span>
-        <p>Directed enterprise analytics initiatives, stakeholder coaching, and quality assurance processes for digital channels.</p>
-      </li>
-      <li class="timeline-item">
-        <h3>Manager, Digital Insights</h3>
-        <span>HSBC GPS — Jan 2012 &ndash; Dec 2018</span>
-        <p>Led digital insights team, delivering actionable analytics reports and user behavior analysis to global stakeholders.</p>
-      </li>
-    </ul>
-  </section>
-
-  <section id="education">
-    <h2>Education</h2>
-    <ul class="education">
-      <li>
-        <strong>Pamantasan ng Lungsod ng Muntinlupa</strong>
-        <span>Bachelor of Science in Computer Science, 2002 &ndash; 2006</span>
-      </li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Information</h2>
-    <div class="contact-info">
-      <div><strong>Email:</strong> <a href="mailto:d97i42@gmail.com">d97i42@gmail.com</a></div>
-      <div><strong>Phone:</strong> (+63) 962-4983-532</div>
-      <div><strong>Location:</strong> Biñan, Laguna, Philippines</div>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Danson Pabalan Aguila. All rights reserved.
-  </footer>
-
-  <script>
-    // Add highlight on section header when nav link clicked
-    document.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        const targetId = link.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
-        const heading = targetSection.querySelector('h2');
-        if (heading) {
-          heading.classList.remove('highlight');
-          // trigger reflow for restart
-          void heading.offsetWidth;
-          heading.classList.add('highlight');
-        }
-      });
-    });
-  </script>
-</body>
-</html>
+        <h3>Senior Manager』
