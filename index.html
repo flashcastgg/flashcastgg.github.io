@@ -3,118 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Marketing 101</title>
+  <title>Your Name | Portfolio</title>
   <style>
-    /* Basic reset */
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    a { text-decoration: none; color: #333; }
-    img { max-width: 100%; display: block; }
-
-    /* Navigation */
-    nav { background: #004A99; padding: 0.5rem 1rem; }
-    nav ul { display: flex; list-style: none; justify-content: center; }
-    nav li { margin: 0 1rem; }
-    nav a { color: #fff; font-weight: bold; }
-
-    /* Sections */
-    section { padding: 2rem 1rem; }
-    .container { max-width: 900px; margin: 0 auto; }
-
-    /* Hero */
-    #hero { background: #f4f4f4; text-align: center; }
-    #hero h1 { margin-bottom: 0.5rem; }
-    #hero p { margin-bottom: 1rem; }
-
-    /* Grid for Services */
-    .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-    @media(min-width: 600px) {
-      .grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    /* Footer */
-    footer { background: #222; color: #ccc; text-align: center; padding: 1rem; font-size: 0.9rem; }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; }
+    header { background: #333; color: #fff; padding: 20px 0; position: sticky; top: 0; z-index: 100; }
+    nav { display: flex; justify-content: center; gap: 20px; }
+    nav a { color: #fff; text-decoration: none; font-weight: bold; }
+    section { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+    .hero { text-align: center; background: #f4f4f4; padding: 100px 20px; }
+    .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .project-card { background: #fff; border: 1px solid #ddd; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .project-card img { width: 100%; height: auto; }
+    .project-content { padding: 20px; }
+    footer { background: #333; color: #fff; text-align: center; padding: 20px 0; }
+    .contact-links a { color: #fff; margin: 0 10px; text-decoration: none; }
   </style>
 </head>
 <body>
+  <header>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#hero">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="hero">
-    <div class="container">
-      <h1>Welcome to Digital Marketing 101</h1>
-      <p>Your one-stop primer on how to grow your brand online.</p>
-      <img src="https://via.placeholder.com/900x300?text=Digital+Marketing+Hero" alt="Digital Marketing Hero">
-    </div>
+  <section class="hero">
+    <h1>Your Name</h1>
+    <p>Digital Analytics Manager & Web Portfolio</p>
   </section>
 
-  <!-- Services Section -->
-  <section id="services">
-    <div class="container">
-      <h2>Our Core Services</h2>
-      <div class="grid">
-        <div>
-          <img src="https://via.placeholder.com/400x300?text=SEO" alt="SEO">
-          <h3>Search Engine Optimization</h3>
-          <p>Improve your site’s visibility on Google and drive organic traffic with best-practice SEO strategies.</p>
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/400x300?text=PPC" alt="PPC Advertising">
-          <h3>PPC Advertising</h3>
-          <p>Maximize ROI with targeted Google Ads and social media campaigns that reach customers at the right moment.</p>
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/400x300?text=Content+Marketing" alt="Content Marketing">
-          <h3>Content Marketing</h3>
-          <p>Engage and educate your audience through blog posts, videos, and infographics tailored to your industry.</p>
-        </div>
-        <div>
-          <img src="https://via.placeholder.com/400x300?text=Email+Marketing" alt="Email Marketing">
-          <h3>Email Marketing</h3>
-          <p>Build loyalty and drive conversions with segmented email campaigns and automated workflows.</p>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Introduce yourself here. Briefly describe your background, experience in web analytics, and passions.</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>Adobe Analytics Implementation</li>
+      <li>Google Analytics & Tag Management</li>
+      <li>Data Visualization & Dashboarding</li>
+      <li>Scrum & Agile Methodologies</li>
+      <li>HTML, CSS, JavaScript</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x200" alt="Project Image" />
+        <div class="project-content">
+          <h3>Project Title 1</h3>
+          <p>Short description of the project, your role, and key outcomes.</p>
         </div>
       </div>
+      <div class="project-card">
+        <img src="https://via.placeholder.com/400x200" alt="Project Image" />
+        <div class="project-content">
+          <h3>Project Title 2</h3>
+          <p>Short description of the project, your role, and key outcomes.</p>
+        </div>
+      </div>
+      <!-- Add more project cards as needed -->
     </div>
   </section>
 
-  <!-- Blog Section -->
-  <section id="blog">
-    <div class="container">
-      <h2>Latest Insights</h2>
-      <article style="margin-bottom:2rem;">
-        <h3>5 SEO Trends to Watch in 2025</h3>
-        <p>Stay ahead of the curve with emerging techniques like AI-driven keyword research, Core Web Vitals optimization, and voice search readiness.</p>
-        <a href="#">Read more →</a>
-      </article>
-      <article>
-        <h3>How to Craft High-Converting Landing Pages</h3>
-        <p>Learn the anatomy of a landing page that converts—clear headlines, trust signals, and friction-free CTAs.</p>
-        <a href="#">Read more →</a>
-      </article>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
   <section id="contact">
-    <div class="container">
-      <h2>Get in Touch</h2>
-      <p>Have questions or want to launch a campaign? Email us at <a href="mailto:info@example.com">info@example.com</a>.</p>
+    <h2>Contact</h2>
+    <p>Feel free to reach out:</p>
+    <div class="contact-links">
+      <a href="mailto:youremail@example.com">Email</a>
+      <a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+      <!-- Add more links if desired -->
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>© 2025 Digital Marketing 101. All rights reserved.</p>
+    <p>&copy; 2025 Your Name. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
