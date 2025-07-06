@@ -12,6 +12,7 @@
       --brand-light: #f5f7fa;
       --accent: #0066cc;
       --card-bg: #e6f8ff;
+      --card-hover-bg: #ccf2ff;
       --text-dark: #333;
       --text-light: #555;
     }
@@ -34,8 +35,22 @@
     .summary { background: #fff; padding: 1.5rem; border-left: 4px solid var(--accent); margin-bottom: 2rem; }
     /* Skills */
     .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-    .skills li { background: var(--card-bg); padding: .75rem 1rem; list-style: none; border: 1px solid #e0e0e0; border-radius: 6px; font-size: .9rem; color: var(--text-dark); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-    .skills li:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); border-color: var(--accent); }
+    .skills li {
+      background: var(--card-bg);
+      padding: .75rem 1rem;
+      list-style: none;
+      border: 1px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: .9rem;
+      color: var(--text-dark);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+    }
+    .skills li:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      border-color: var(--accent);
+      background-color: var(--card-hover-bg);
+    }
     /* Timeline */
     .timeline { list-style: none; position: relative; }
     .timeline::before { content: ''; position: absolute; left: 20px; top: 0; bottom: 0; width: 2px; background: var(--accent); }
