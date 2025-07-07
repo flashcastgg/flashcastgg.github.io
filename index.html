@@ -74,16 +74,42 @@
     nav a:hover::after {
       width: 100%; left: 0;
     }
-    section {
-      padding: 1rem;
-      scroll-margin-top: calc(var(--header-height) + var(--offset-extra));
-    }
+
+    /* Section headers with gradient highlight */
     h2 {
       font-size: 1.4rem;
       color: var(--brand-dark);
       margin-bottom: 1rem;
       border-bottom: 2px solid var(--accent);
       padding-bottom: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes slideGradient {
+      0%   { transform: translateX(-100%); opacity: 1; }
+      80%  { transform: translateX(0);     opacity: 1; }
+      100% { transform: translateX(0);     opacity: 0; }
+    }
+    .h2-highlight::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        #ff7e5f,
+        #feb47b,
+        #ff7e5f
+      );
+      animation: slideGradient 1.2s ease-out forwards;
+      pointer-events: none;
+    }
+
+    section {
+      padding: 1rem;
+      scroll-margin-top: calc(var(--header-height) + var(--offset-extra));
     }
     .summary { background: #fff; padding: 1rem; border-left: 4px solid var(--accent); margin-bottom: 1.5rem; }
     ul { list-style: none; padding: 0; margin-bottom: 1.5rem; }
@@ -230,18 +256,34 @@
   <footer>
     &copy; 2025 Danson Pabalan Aguila. All rights reserved.
   </footer>
+
   <script>
-    const header = document.querySelector('header');
+    const header       = document.querySelector('header');
     const headerHeight = header.offsetHeight;
-    const extraOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--offset-extra')) || 0;
+    const extraOffset  = parseInt(getComputedStyle(document.documentElement)
+                            .getPropertyValue('--offset-extra')) || 0;
+
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
+
+        // Smooth scroll
         const targetId = link.getAttribute('href').substring(1);
-        const target = document.getElementById(targetId);
+        const target   = document.getElementById(targetId);
         if (!target) return;
         const scrollPos = target.offsetTop - headerHeight - extraOffset;
         window.scrollTo({ top: scrollPos < 0 ? 0 : scrollPos, behavior: 'smooth' });
+
+        // Gradient highlight on the <h2>
+        const heading = target.querySelector('h2');
+        if (!heading) return;
+
+        heading.classList.remove('h2-highlight');
+        void heading.offsetWidth;          // force reflow
+        heading.classList.add('h2-highlight');
+
+        // remove highlight after animation
+        setTimeout(() => heading.classList.remove('h2-highlight'), 1200);
       });
     });
   </script>
