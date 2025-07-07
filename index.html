@@ -41,41 +41,38 @@
     }
     header h1 { font-size: 1.5rem; margin: 0.2rem 0; }
     header p { font-size: 0.85rem; color: #ccc; margin: 0.4rem 0; }
+    /* Navigation */
     nav {
       display: flex;
-      flex-direction: row;
-      overflow-x: auto;
+      flex-wrap: wrap;
+      justify-content: center;
       background: var(--brand-dark);
     }
     nav a {
-      flex: none;
       color: #fff;
-      padding: 0.5rem 0.75rem;
+      padding: 0.5rem 1rem;
       text-decoration: none;
       font-weight: 600;
-      text-align: center;
-      border-left: 1px solid rgba(255,255,255,0.1);
       position: relative;
-      transition: color 0.3s ease, transform 0.3s ease;
+      transition: color 0.3s, transform 0.3s;
     }
-    nav a:first-child { border-left: none; }
+    nav a + a { margin-left: 1rem; }
     nav a::after {
       content: '';
       position: absolute;
-      bottom: 8px;
+      bottom: 4px;
       left: 50%;
       width: 0;
       height: 2px;
       background: var(--accent);
-      transition: width 0.3s ease, left 0.3s ease;
+      transition: width 0.3s, left 0.3s;
     }
     nav a:hover {
       color: var(--accent);
       transform: translateY(-2px);
     }
     nav a:hover::after {
-      width: 100%;
-      left: 0;
+      width: 100%; left: 0;
     }
     section {
       padding: 1rem;
@@ -90,14 +87,22 @@
     }
     .summary { background: #fff; padding: 1rem; border-left: 4px solid var(--accent); margin-bottom: 1.5rem; }
     ul { list-style: none; padding: 0; margin-bottom: 1.5rem; }
-    li { background: var(--card-bg); margin-bottom: 0.5rem; padding: 0.75rem; border-radius: 6px; transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; }
-    li:hover { transform: translateY(-4px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); background-color: var(--card-hover-bg); }
+    li {
+      background: var(--card-bg);
+      margin-bottom: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 6px;
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    }
+    li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: var(--card-hover-bg);
+    }
     .competencies li, .martech-skills li { background: #fff; border: 1px solid #e0e0e0; }
     .contact-info div { display: flex; align-items: center; margin-bottom: 0.5rem; color: var(--text-light); }
-    .timeline { list-style: none; margin-bottom: 1.5rem; padding: 0; }
-    .timeline-item { margin-bottom: 1rem; padding: 0; }
-    .timeline-item { margin-bottom: 0.5rem; padding: 0; }
-     }
+    .timeline { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .timeline-item { margin-bottom: 1rem; }
     .timeline-item h3 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--brand-dark); }
     .timeline-item span { font-size: 0.85rem; color: var(--text-light); display: block; }
     footer { text-align: center; padding: 1rem; font-size: 0.8rem; color: var(--text-light); background: var(--brand-light); }
@@ -107,15 +112,8 @@
     @media (min-width: 600px) {
       header h1 { font-size: 1.8rem; }
       header p { font-size: 0.9rem; }
-      nav { flex-direction: row; justify-content: center; }
-      nav a { border: none; margin: 0 1rem; padding: 0.5rem; }
-      section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-      .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
-      .contact-info { display: flex; justify-content: space-between; }
-    }
-      header p { font-size: 0.9rem; }
-      nav { flex-direction: row; justify-content: center; }
-      nav a { border: none; margin: 0 1rem; padding: 0.5rem; }
+      nav { display: flex; }
+      nav a { margin-left: 0; }
       section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
       .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
       .contact-info { display: flex; justify-content: space-between; }
@@ -173,12 +171,12 @@
   <section id="martech-skills">
     <h2>Martech Skills</h2>
     <ul class="martech-skills">
-      <li><strong>Adobe Analytics:</strong> Proficient in utilizing Adobe Analytics to measure, analyze, and optimize digital marketing efforts and user experiences. Skilled in creating custom reports, segments, and dashboards to extract actionable insights and drive strategic decision-making.</li>
-      <li><strong>Adobe Target:</strong> Experienced in implementing and managing Adobe Target for A/B testing, personalization, and optimization initiatives. Capable of designing and executing sophisticated targeting strategies to enhance user engagement and conversion rates.</li>
-      <li><strong>Adobe Launch / Data Collection:</strong> Expertise in Adobe Launch for seamless tag management and data collection across digital properties. Skilled in deploying and managing tags, ensuring accurate data capture for comprehensive analytics and marketing attribution.</li>
-      <li><strong>Google Analytics / GA4:</strong> Proficient in leveraging Google Analytics and Google Analytics 4 to track website traffic, user behavior, and conversion metrics. Experienced in configuring custom dimensions, events, and goals to capture relevant data for performance analysis and optimization.</li>
-      <li><strong>Google Tag Manager:</strong> Skilled in implementing and managing Google Tag Manager setups for streamlined tag deployment and data collection. Experienced in configuring triggers, variables, and tags to enable advanced tracking and measurement capabilities.</li>
-      <li><strong>Tealium iQ:</strong> Competent in utilizing Tealium iQ for tag management and data enrichment, ensuring accurate and comprehensive data collection for analytics and marketing purposes. Capable of orchestrating complex data flows and integrations across diverse digital platforms.</li>
+      <li><strong>Adobe Analytics:</strong> Proficient in utilizing Adobe Analytics to measure, analyze, and optimize digital marketing efforts and user experiences.</li>
+      <li><strong>Adobe Target:</strong> Experienced in implementing and managing Adobe Target for A/B testing, personalization, and optimization initiatives.</li>
+      <li><strong>Adobe Launch / Data Collection:</strong> Expertise in Adobe Launch for seamless tag management and data collection across digital properties.</li>
+      <li><strong>Google Analytics / GA4:</strong> Proficient in leveraging Google Analytics and Google Analytics 4 to track website traffic, user behavior, and conversion metrics.</li>
+      <li><strong>Google Tag Manager:</strong> Skilled in implementing and managing Google Tag Manager setups for streamlined tag deployment.</li>
+      <li><strong>Tealium iQ:</strong> Competent in utilizing Tealium iQ for tag management and data enrichment across digital platforms.</li>
     </ul>
   </section>
 
@@ -211,6 +209,41 @@
         <span>HSBC Electronic Data Processing Philippines, Inc. (GPS)</span>
       </li>
     </ul>
-  ```
+  </section>
 
-I've added CSS rules under /* Timeline Styling */ to render a vertical line through the Work Experience section with circular markers for each timeline item. Let me know if you'd like any tweaks!
+  <section id="education">
+    <h2>Education</h2>
+    <ul class="education">
+      <li><strong>Pamantasan ng Lungsod ng Muntinlupa</strong> – Bachelor of Science in Computer Science, 2002 — 2006</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <div><strong>Email:</strong> <a href="mailto:d97i42@gmail.com">d97i42@gmail.com</a></div>
+      <div><strong>Phone:</strong> (+63) 962-4983-532</div>
+      <div><strong>Location:</strong> Biñan, Laguna, Philippines</div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Danson Pabalan Aguila. All rights reserved.
+  </footer>
+  <script>
+    const header = document.querySelector('header');
+    const headerHeight = header.offsetHeight;
+    const extraOffset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--offset-extra')) || 0;
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (!target) return;
+        const scrollPos = target.offsetTop - headerHeight - extraOffset;
+        window.scrollTo({ top: scrollPos < 0 ? 0 : scrollPos, behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
