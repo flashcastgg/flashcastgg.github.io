@@ -324,3 +324,15 @@
     .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
     .contact-info { display: flex; justify-content: space-between; }
   }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  background-color: #f1f1f1;
+  font-size: 0.85rem;
+  color: var(--text-light);
+  border-top: 1px solid #ddd;
+}
