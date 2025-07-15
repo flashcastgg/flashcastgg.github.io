@@ -139,3 +139,10 @@ scrollToTopBtn.addEventListener('click', () => {
   });
 });
 
+document.querySelectorAll('input, textarea').forEach(field => {
+  field.addEventListener('focus', () => {
+    setTimeout(() => {
+      field.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 300);
+  });
+});
