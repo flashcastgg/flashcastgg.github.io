@@ -22,6 +22,20 @@
     line-height: 1.6;
   }
 
+/* Make sure body and html allow scrolling */
+html, body {
+  height: 100%;
+  overflow: auto;
+}
+
+/* Ensure your modal form container is scrollable */
+.contact-modal {
+  max-height: 90vh; /* or 100vh minus some header space */
+  overflow-y: auto;
+  padding-bottom: 20vh; /* extra space so bottom field is not hidden */
+  box-sizing: border-box;
+}
+
   header {
     background: var(--brand-dark);
     color: #fff;
