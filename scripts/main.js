@@ -82,6 +82,24 @@ form.addEventListener('submit', async (e) => {
  //   valid = false;
  // }
 
+  // Check message length (Formspree limit ~10,000 characters)
+  const messageField = form.elements['message'];
+  const messageError = form.querySelector('.error[data-for="message"]');
+  const maxLength = 10000;
+
+  if (messageField.value.length > maxLength) {
+    messageError.textContent = `Message too long. Please limit to ${maxLength} characters.`;
+    messageError.classList.add('visible');
+    valid = false;
+  }
+
+  const messageField = form.elements['message'];
+  const charCount = document.getElementById('char-count');
+
+  messageField.addEventListener('input', () => {
+  charCount.textContent = `${messageField.value.length} / ${maxLength}`;
+  });
+
   if (!valid) return;
 
   try {
@@ -119,3 +137,4 @@ function clearForm() {
   clearErrors();
   form.reset();
 }
+
