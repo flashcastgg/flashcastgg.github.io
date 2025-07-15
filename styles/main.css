@@ -328,11 +328,14 @@
 footer {
   position: fixed;
   bottom: 0;
+  left: 0;
   width: 100%;
   text-align: center;
-  padding: 1rem;
-  background-color: #f1f1f1;
-  font-size: 0.85rem;
-  color: var(--text-light);
-  border-top: 1px solid #ddd;
+  padding: 0.5rem 1rem;
+  background-color: #1a1f36; /* dark background for contrast */
+  color: #fff;
+  font-size: 0.75rem;
+  z-index: 1000;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
+
