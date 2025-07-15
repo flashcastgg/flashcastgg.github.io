@@ -121,27 +121,3 @@ function clearForm() {
   form.reset();
 }
 
-const messageField = document.getElementById('message');
-const charCount = document.getElementById('char-count');
-
-messageField.addEventListener('input', () => {
-  charCount.textContent = `${messageField.value.length} / 10000`;
-  validateForm();
-});
-
-const sendBtn = document.getElementById('send-btn');
-
-form.addEventListener('input', validateForm);
-
-function validateForm() {
-  const subject = form.elements['subject'].value.trim();
-  const message = form.elements['message'].value.trim();
-  const from = form.elements['from'].value.trim();
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  const allFilled = subject && message && from;
-  const emailValid = emailPattern.test(from);
-
-  sendBtn.disabled = !(allFilled && emailValid);
-}
-
