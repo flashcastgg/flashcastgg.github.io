@@ -132,7 +132,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </section>
 
     <div id="email-modal" class="modal-overlay" hidden>
-  <div class="modal">
+    <div class="modal">
     <button class="modal-close" aria-label="Close form">×</button>
     <h3>Contact Me</h3>
     <form id="email-form" novalidate>
@@ -145,6 +145,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         Message
         <textarea name="message" placeholder="Type your message here…" required></textarea>
         <small class="error" data-for="message"></small>
+        <textarea name="message" id="message" maxlength="10000" required></textarea>
+        <small id="char-count">0 / 10000</small>
       </label>
       <label>
         Your Email
@@ -153,8 +155,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </label>
       <button type="submit" class="submit-btn">Send This</button>
     </form>
-  </div>
-</div>
+    </div>
+    </div>
 
 <div id="success-notif" class="notification" hidden>
   <button id="notif-close" class="notif-close" aria-label="Close notification">×</button>
