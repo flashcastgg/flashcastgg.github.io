@@ -1,6 +1,8 @@
 // main.js
 
-// Smooth scroll with header offset and section animation
+// -------------------------------
+// Smooth Scroll with Header Offset + H2 Animation
+// -------------------------------
 document.querySelectorAll('nav a').forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -19,42 +21,53 @@ document.querySelectorAll('nav a').forEach(link => {
       behavior: 'smooth'
     });
 
+    // Highlight h2 on arrival
     const heading = target.querySelector('h2');
     if (heading) {
       heading.classList.remove('h2-highlight');
-      void heading.offsetWidth; // force reflow
+      void heading.offsetWidth; // force reflow for restart
       heading.classList.add('h2-highlight');
       setTimeout(() => heading.classList.remove('h2-highlight'), 1200);
     }
   });
 });
 
-// Elements
-const modal        = document.getElementById('email-modal');
-const form         = document.getElementById('email-form');
-const cta          = document.getElementById('email-cta');
-const closeBtn     = modal.querySelector('.modal-close');
-const notif        = document.getElementById('success-notif');
-const notifClose   = document.getElementById('notif-close');
+// -------------------------------
+// Modal Elements
+// -------------------------------
+const modal      = document.getElementById('email-modal');
+const form       = document.getElementById('email-form');
+const cta        = document.getElementById('email-cta');
+const closeBtn   = modal.querySelector('.modal-close');
+const notif      = document.getElementById('success-notif');
+const notifClose = document.getElementById('notif-close');
 
-// Open modal
+// -------------------------------
+// Open Modal on CTA Click
+// -------------------------------
 cta.addEventListener('click', () => {
   modal.hidden = false;
 });
 
-// Close modal
+// -------------------------------
+// Close Modal and Reset Form
+// -------------------------------
 closeBtn.addEventListener('click', () => {
   modal.hidden = true;
   clearForm();
 });
 
-// Close notification
+// -------------------------------
+// Close Notification Banner
+// -------------------------------
 notifClose.addEventListener('click', () => {
   notif.classList.remove('show', 'fadeout');
   notif.hidden = true;
 });
 
-// Handle form submission
+// -------------------------------
+// Form Validation and Submission
+// -------------------------------
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   clearErrors();
@@ -62,6 +75,7 @@ form.addEventListener('submit', async (e) => {
   let valid = true;
   const requiredFields = ['subject', 'message', 'from'];
 
+  // Validate required fields
   requiredFields.forEach(name => {
     const field = form.elements[name];
     const error = form.querySelector(`.error[data-for="${name}"]`);
@@ -72,16 +86,17 @@ form.addEventListener('submit', async (e) => {
     }
   });
 
+  // Optional: Uncomment below to enable email format validation
+  /*
   const email = form.elements['from'].value.trim();
   const emailError = form.querySelector('.error[data-for="from"]');
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
- // if (email && !pattern.test(email)) {
- //   emailError.textContent = 'Please enter a valid email address.';
- //   emailError.classList.add('visible');
- //   valid = false;
- // }
-
+  if (email && !pattern.test(email)) {
+    emailError.textContent = 'Please enter a valid email address.';
+    emailError.classList.add('visible');
+    valid = false;
+  }
+  */
 
   if (!valid) return;
 
@@ -92,12 +107,13 @@ form.addEventListener('submit', async (e) => {
       body: new FormData(form)
     });
 
+    // Success actions
     modal.hidden = true;
     clearForm();
-
     notif.hidden = false;
     notif.classList.add('show', 'fadeout');
 
+    // Auto-dismiss after 5 seconds
     setTimeout(() => {
       notif.classList.remove('show', 'fadeout');
       notif.hidden = true;
@@ -108,7 +124,9 @@ form.addEventListener('submit', async (e) => {
   }
 });
 
-// Helpers
+// -------------------------------
+// Helper Functions
+// -------------------------------
 function clearErrors() {
   form.querySelectorAll('.error').forEach(el => {
     el.textContent = '';
@@ -121,7 +139,9 @@ function clearForm() {
   form.reset();
 }
 
-// Scroll to top button
+// -------------------------------
+// Scroll to Top Button
+// -------------------------------
 const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
 window.addEventListener('scroll', () => {
@@ -138,4 +158,3 @@ scrollToTopBtn.addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
-
