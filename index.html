@@ -154,16 +154,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
       .contact-info { display: flex; justify-content: space-between; }
 
-      .email-cta {
+.email-cta {
   background: var(--accent);
   color: #fff;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2rem;
   border: none;
   border-radius: 4px;
   font-weight: 600;
+  font-size: 1rem;
   cursor: pointer;
-  margin: 1rem auto;
+  margin: 2rem auto;
   display: block;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.email-cta:hover {
+  background-color: #005bb5;
+  transform: translateY(-1px);
+}
+
 }
 
 .modal-overlay {
@@ -180,18 +189,68 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 .modal {
   background: #fff;
-  padding: 2rem;
+  padding: 2.5rem;
   border-radius: 8px;
-  width: 600px;
+  width: 500px;
   max-width: 90%;
   position: relative;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
-.modal, 
-.modal input, 
-.modal textarea, 
-.modal button, 
-.modal label {
-  font-family: 'Montserrat', sans-serif;
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
+  color: var(--brand-dark);
+  font-weight: 600;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.modal form label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.modal form input,
+.modal form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.modal form input:focus,
+.modal form textarea:focus {
+  border-color: var(--accent);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.modal form textarea {
+  height: 150px;
+  resize: vertical;
+}
+
+.modal form button.submit-btn {
+  background-color: var(--accent);
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+  transition: background-color 0.3s;
+}
+
+.modal form button.submit-btn:hover {
+  background-color: #005bb5;
 }
 
 .modal-close {
@@ -200,34 +259,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   right: 1rem;
   background: none;
   border: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+  color: #666;
   cursor: pointer;
 }
-.modal form input,
-.modal form textarea {
-  width: 100%;
-  padding: 0.75rem;
-  margin-top: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.modal form textarea {
-  height: 300px;
-}
+
 .modal form .error {
   color: red;
-  font-size: 0.9rem;
-  visibility: hidden;
+  font-size: 0.85rem;
   margin-top: 0.25rem;
+  visibility: hidden;
 }
+
 .modal form .error.visible {
   visibility: visible;
 }
-.modal form button.submit-btn {
-  position: absolute;
-  bottom: 1.5rem;
-  right: 1.5rem;
-}
+
 
 .notification {
   position: fixed;
@@ -398,11 +445,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   </section>
 
-  <footer>
-    &copy; 2025 Danson Pabalan Aguila. All rights reserved.
-  </footer>
-
-  <div id="email-modal" class="modal-overlay" hidden>
+    <div id="email-modal" class="modal-overlay" hidden>
   <div class="modal">
     <button class="modal-close" aria-label="Close form">×</button>
     <h3>Contact Danson</h3>
@@ -431,6 +474,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <button id="notif-close" class="notif-close" aria-label="Close notification">×</button>
   <p>Message sent!</p>
 </div>
+
+
+  <footer>
+    &copy; 2025 Danson Pabalan Aguila. All rights reserved.
+  </footer>
+
 
 
   <script>
