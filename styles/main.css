@@ -65,11 +65,11 @@
     transition: width 0.3s, left 0.3s;
   }
 
-  nav a:hover {
-    /*color: var(--accent);*/
-    color: #66ccff; /* light blue */
-    transform: translateY(-2px);
-  }
+nav a:hover {
+  color: var(--hover-blue);
+  transform: translateY(-2px);
+}
+
 
   nav a:hover::after {
     width: 100%; left: 0;
