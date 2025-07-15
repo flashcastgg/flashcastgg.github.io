@@ -171,7 +171,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
   <footer>
-    &copy; 2025 Danson Pabalan Aguila. All rights reserved. <small id="site-version"></small>
+    &copy; 2025 Danson Pabalan Aguila. All rights reserved. 
+    <small id="site-version"></small>
   </footer>
 
 
@@ -296,6 +297,27 @@ function clearForm() {
 
 </script>
 
+<script>
+  function formatVersion(date) {
+    const yyyy = date.getFullYear();
+    const mm = String(date.getMonth() + 1).padStart(2, '0');
+    const dd = String(date.getDate()).padStart(2, '0');
+    let hours = date.getHours();
+    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const ampm = hours >= 12 ? 'pm' : 'am';
 
+    hours = hours % 12;
+    hours = hours === 0 ? 12 : hours; // convert '0' hour to '12'
+    const hh = String(hours).padStart(2, '0');
+
+    return `v.${yyyy}${mm}${dd}.${hh}${minutes}${ampm}`;
+  }
+
+  const versionElement = document.getElementById('site-version');
+  const now = new Date();
+  versionElement.textContent = formatVersion(now);
+</script>
+
+  
 </body>
 </html>
