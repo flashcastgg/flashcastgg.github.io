@@ -6,6 +6,7 @@
     --card-hover-bg: #ccf2ff;
     --text-dark: #333;
     --text-light: #555;
+    --hover-blue: #66ccff; /* 💡 new */
     --header-height: 80px;
     --offset-extra: 3px;
   }
@@ -65,7 +66,8 @@
   }
 
   nav a:hover {
-    color: var(--accent);
+    /*color: var(--accent);*/
+    color: #66ccff; /* light blue */
     transform: translateY(-2px);
   }
 
