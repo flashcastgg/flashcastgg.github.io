@@ -150,7 +150,7 @@
   font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  margin: 2rem auto 1.5rem auto; /* <-- adds space below the button */
+  margin: 2rem auto 5rem auto; /* <-- adds space below the button */
   display: block;
   transition: background-color 0.3s, transform 0.2s;
 }
