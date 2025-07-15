@@ -138,11 +138,3 @@ scrollToTopBtn.addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
-
-document.querySelectorAll('#email-modal input, #email-modal textarea').forEach(el => {
-  el.addEventListener('focus', () => {
-    setTimeout(() => {
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 300); // Slight delay to wait for the keyboard to appear
-  });
-});
