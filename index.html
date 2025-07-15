@@ -138,19 +138,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <form id="email-form" novalidate>
       <label>
         Subject
-        <input type="text" name="subject" placeholder="What do you want to talk about?" required>
+        <!--<input type="text" name="subject" placeholder="What do you want to talk about?" required>-->
+        <input type="text" name="subject" id="subject" maxlength="100" placeholder="What do you want to talk about?" required>
         <small class="error" data-for="subject"></small>
       </label>
       <label>
         Message
-        <textarea name="message" placeholder="Type your message here…" required></textarea>
+        <!--<textarea name="message" placeholder="Type your message here…" required></textarea>-->
+        <textarea name="message" id="message" maxlength="1000" placeholder="Type your message here…" required></textarea>
         <!--<textarea name="message" placeholder="Type your message here…" id="message" maxlength="10000" required></textarea>-->
         <!--<small id="char-count">0 / 10000</small>-->
         <small class="error" data-for="message"></small>
       </label>
       <label>
         Your Email
-        <input type="email" name="from" placeholder="How can I reach you? (you@mail.com)" required>
+        <!--<input type="email" name="from" placeholder="How can I reach you? (you@mail.com)" required>-->
+        <input type="email" name="from" id="from" maxlength="254" placeholder="How can I reach you? (you@mail.com)" required>
         <small class="error" data-for="from"></small>
       </label>
       <button type="submit" class="submit-btn">Send This</button>
@@ -166,7 +169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <footer>
     &copy; 2025 Danson Pabalan Aguila. All rights reserved. 
-    <small>v.20250716.0140am</small>
+    <small>v.20250716.0148am</small>
   </footer>
   
 <script src="/scripts/main.js"></script>
