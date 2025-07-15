@@ -1,22 +1,294 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
-  <script src="scripts/gtm.js"></script>
-  
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WBB2NXQK');</script>
+<!-- End Google Tag Manager -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Danson Aguila | Digital Analytics Professional</title>
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/main.css">
+  <style>
+    :root {
+      --brand-dark: #1a1f36;
+      --brand-light: #f5f7fa;
+      --accent: #0066cc;
+      --card-bg: #e6f8ff;
+      --card-hover-bg: #ccf2ff;
+      --text-dark: #333;
+      --text-light: #555;
+      --header-height: 80px;
+      --offset-extra: 3px;
+    }
+    html { scroll-behavior: smooth; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--brand-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+    header {
+      background: var(--brand-dark);
+      color: #fff;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    header h1 { font-size: 1.5rem; margin: 0.2rem 0; }
+    header p { font-size: 0.85rem; color: #ccc; margin: 0.4rem 0; }
+    /* Navigation */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: var(--brand-dark);
+    }
+    nav a {
+      color: #fff;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+      transition: color 0.3s, transform 0.3s;
+    }
+    nav a + a { margin-left: 1rem; }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s, left 0.3s;
+    }
+    nav a:hover {
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+    nav a:hover::after {
+      width: 100%; left: 0;
+    }
+
+    /* Section headers with gradient highlight */
+    h2 {
+      font-size: 1.4rem;
+      color: var(--brand-dark);
+      margin-bottom: 1rem;
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 0.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes slideGradient {
+      0%   { transform: translateX(-100%); opacity: 1; }
+      80%  { transform: translateX(0);     opacity: 1; }
+      100% { transform: translateX(0);     opacity: 0; }
+    }
+    .h2-highlight::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(
+        90deg,
+        #ff7e5f,
+        #feb47b,
+        #ff7e5f
+      );
+      animation: slideGradient 1.2s ease-out forwards;
+      pointer-events: none;
+    }
+
+    section {
+      padding: 1rem;
+      scroll-margin-top: calc(var(--header-height) + var(--offset-extra));
+    }
+    .summary { background: #fff; padding: 1rem; border-left: 4px solid var(--accent); margin-bottom: 1.5rem; }
+    ul { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    li {
+      background: var(--card-bg);
+      margin-bottom: 0.5rem;
+      padding: 0.75rem;
+      border-radius: 6px;
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    }
+    li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background-color: var(--card-hover-bg);
+    }
+    .competencies li, .martech-skills li { background: #fff; border: 1px solid #e0e0e0; }
+    .contact-info div { display: flex; align-items: center; margin-bottom: 0.5rem; color: var(--text-light); }
+    .timeline { list-style: none; padding: 0; margin-bottom: 1.5rem; }
+    .timeline-item { margin-bottom: 1rem; }
+    .timeline-item h3 { font-size: 1rem; margin-bottom: 0.25rem; color: var(--brand-dark); }
+    .timeline-item span { font-size: 0.85rem; color: var(--text-light); display: block; }
+    footer { text-align: center; padding: 1rem; font-size: 0.8rem; color: var(--text-light); background: var(--brand-light); }
+    @media (max-width: 599px) {
+      nav { display: none; }
+    }
+    @media (min-width: 600px) {
+      header h1 { font-size: 1.8rem; }
+      header p { font-size: 0.9rem; }
+      nav { display: flex; }
+      nav a { margin-left: 0; }
+      section { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+      .skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+      .contact-info { display: flex; justify-content: space-between; }
+
+      .email-cta {
+  background: var(--accent);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 1rem auto;
+  display: block;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+.modal-overlay[hidden] {
+  display: none;
+}
+.modal {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  width: 600px;
+  max-width: 90%;
+  position: relative;
+}
+.modal, 
+.modal input, 
+.modal textarea, 
+.modal button, 
+.modal label {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.modal form input,
+.modal form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.modal form textarea {
+  height: 300px;
+}
+.modal form .error {
+  color: red;
+  font-size: 0.9rem;
+  visibility: hidden;
+  margin-top: 0.25rem;
+}
+.modal form .error.visible {
+  visibility: visible;
+}
+.modal form button.submit-btn {
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+}
+
+.notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  z-index: 3000;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.notification.show {
+  opacity: 1;
+}
+.notification[hidden] {
+  display: none;
+}
+.notif-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal form label {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+.modal form button.submit-btn {
+  margin-top: 1.5rem;
+}
+.notification.fadeout {
+  animation: fadeOut 5s forwards;
+}
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  20% { opacity: 0.8; }
+  40% { opacity: 0.6; }
+  60% { opacity: 0.4; }
+  80% { opacity: 0.2; }
+  100% { opacity: 0; }
+}
+
+    }
+  </style>
 </head>
 <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBB2NXQK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Header and Navigation -->
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBB2NXQK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
   <header>
     <h1>Danson Pabalan Aguila</h1>
     <p>Senior Manager, Digital Analytics | Adobe & Google MarTech Professional</p>
@@ -126,7 +398,11 @@
 
   </section>
 
-    <div id="email-modal" class="modal-overlay" hidden>
+  <footer>
+    &copy; 2025 Danson Pabalan Aguila. All rights reserved.
+  </footer>
+
+  <div id="email-modal" class="modal-overlay" hidden>
   <div class="modal">
     <button class="modal-close" aria-label="Close form">×</button>
     <h3>Contact Danson</h3>
@@ -156,18 +432,110 @@
   <p>Message sent!</p>
 </div>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Danson Pabalan Aguila. All rights reserved.
-  </footer>
 
-  <!-- Modal & Notification Components -->
-  <div id="email-modal" class="modal-overlay" hidden></div>
-  <div id="success-notif" class="notification" hidden></div>
+  <script>
+    const header       = document.querySelector('header');
+    const headerHeight = header.offsetHeight;
+    const extraOffset  = parseInt(getComputedStyle(document.documentElement)
+                            .getPropertyValue('--offset-extra')) || 0;
 
-  <!-- JavaScript Modules -->
-  <script src="scripts/modal.js"></script>
-  <script src="scripts/navigation.js"></script>
-  <script src="scripts/form-validation.js"></script>
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+
+        // Smooth scroll
+        const targetId = link.getAttribute('href').substring(1);
+        const target   = document.getElementById(targetId);
+        if (!target) return;
+        const scrollPos = target.offsetTop - headerHeight - extraOffset;
+        window.scrollTo({ top: scrollPos < 0 ? 0 : scrollPos, behavior: 'smooth' });
+
+        // Gradient highlight on the <h2>
+        const heading = target.querySelector('h2');
+        if (!heading) return;
+
+        heading.classList.remove('h2-highlight');
+        void heading.offsetWidth;          // force reflow
+        heading.classList.add('h2-highlight');
+
+        // remove highlight after animation
+        setTimeout(() => heading.classList.remove('h2-highlight'), 1200);
+      });
+    });
+  </script>
+
+  <script>
+  const cta = document.getElementById('email-cta');
+  const modal = document.getElementById('email-modal');
+  const closeBtn = modal.querySelector('.modal-close');
+  const form = document.getElementById('email-form');
+  const notif = document.getElementById('success-notif');
+  const notifClose = document.getElementById('notif-close');
+
+  cta.addEventListener('click', () => modal.hidden = false);
+  closeBtn.addEventListener('click', () => {
+    modal.hidden = true;
+    clearErrors();
+    form.reset();
+  });
+  notifClose.addEventListener('click', () => notif.hidden = true);
+
+  form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  clearErrors();
+  let valid = true;
+
+  ['subject', 'message', 'from'].forEach(name => {
+    const field = form.elements[name];
+    const error = form.querySelector(`.error[data-for="${name}"]`);
+    if (!field.value.trim()) {
+      error.textContent = 'This field is required.';
+      error.classList.add('visible');
+      valid = false;
+    }
+  });
+
+  const email = form.elements['from'];
+  const emailError = form.querySelector('.error[data-for="from"]');
+  const pattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+  //if (email.value && !pattern.test(email.value)) {
+  //  emailError.textContent = 'Please enter a valid email address.';
+  //   emailError.classList.add('visible');
+  //  valid = false;
+  //}
+
+  if (!valid) return;
+
+  // Send email using Formspree (replace URL with your actual endpoint)
+  try {
+    await fetch('https://formspree.io/f/mzzvplly', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    });
+  } catch (err) {
+    console.error('Email send failed:', err);
+  }
+
+  modal.hidden = true;
+  form.reset();
+  notif.hidden = false;
+  notif.classList.add('show', 'fadeout');
+  setTimeout(() => {
+    notif.classList.remove('show', 'fadeout');
+    notif.hidden = true;
+  }, 5000);
+});
+
+
+  function clearErrors() {
+    form.querySelectorAll('.error').forEach(el => {
+      el.textContent = '';
+      el.classList.remove('visible');
+    });
+  }
+</script>
+
+
 </body>
 </html>
