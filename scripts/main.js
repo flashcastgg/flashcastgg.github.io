@@ -76,11 +76,11 @@ form.addEventListener('submit', async (e) => {
   const emailError = form.querySelector('.error[data-for="from"]');
   const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if (email && !pattern.test(email)) {
-    emailError.textContent = 'Please enter a valid email address.';
-    emailError.classList.add('visible');
-    valid = false;
-  }
+ // if (email && !pattern.test(email)) {
+ //   emailError.textContent = 'Please enter a valid email address.';
+ //   emailError.classList.add('visible');
+ //   valid = false;
+ // }
 
   if (!valid) return;
 
