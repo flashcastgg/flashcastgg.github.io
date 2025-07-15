@@ -121,6 +121,14 @@ function clearForm() {
   form.reset();
 }
 
+const messageField = document.getElementById('message');
+const charCount = document.getElementById('char-count');
+
+messageField.addEventListener('input', () => {
+  charCount.textContent = `${messageField.value.length} / 10000`;
+  validateForm();
+});
+
 const sendBtn = document.getElementById('send-btn');
 
 form.addEventListener('input', validateForm);
