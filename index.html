@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Google Tag Manager Script -->
+  <script src="/scripts/gtm.js"></script>
 
-<script src="/scripts/gtm.js"></script>
-
+  <!-- Meta Configuration -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Danson Aguila | Digital Analytics Professional</title>
+
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/images/sleep@240x240.png">
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <link rel="stylesheet" href="/styles/main.css">
 
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="/styles/main.css">
 </head>
+
 <body>
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBB2NXQK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript fallback) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBB2NXQK"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
 
+  <!-- ===== HEADER & NAVIGATION ===== -->
   <header>
     <h1>Danson Pabalan Aguila</h1>
     <p>Senior Manager, Digital Analytics | Adobe & Google MarTech Professional</p>
@@ -36,6 +42,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </nav>
   </header>
 
+  <!-- ===== PROFESSIONAL SUMMARY ===== -->
   <section id="summary">
     <h2>Professional Summary</h2>
     <div class="summary">
@@ -43,6 +50,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </section>
 
+  <!-- ===== SKILLS & STACK ===== -->
   <section id="skills">
     <h2>Skills &amp; Martech Stack</h2>
     <ul class="skills">
@@ -56,6 +64,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
   </section>
 
+  <!-- ===== CORE COMPETENCIES ===== -->
   <section id="core-competencies">
     <h2>Core Competencies</h2>
     <ul class="competencies">
@@ -69,6 +78,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
   </section>
 
+  <!-- ===== MARTECH SKILLS DETAILS ===== -->
   <section id="martech-skills">
     <h2>Martech Skills</h2>
     <ul class="martech-skills">
@@ -81,6 +91,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
   </section>
 
+  <!-- ===== EXPERIENCE TIMELINE ===== -->
   <section id="experience">
     <h2>Work Experience</h2>
     <ul class="timeline">
@@ -112,6 +123,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
   </section>
 
+  <!-- ===== EDUCATION SECTION ===== -->
   <section id="education">
     <h2>Education</h2>
     <ul class="education">
@@ -119,6 +131,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </ul>
   </section>
 
+  <!-- ===== CONTACT INFORMATION ===== -->
   <section id="contact">
     <h2>Contact Information</h2>
     <div class="contact-info">
@@ -126,55 +139,52 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div><strong>Phone:</strong> (+63) 962-4983-532</div>
       <div><strong>Location:</strong> Biñan, Laguna, Philippines</div>
     </div>
-
     <button id="email-cta" class="email-cta">Contact Me</button>
-
   </section>
 
-    <div id="email-modal" class="modal-overlay" hidden>
+  <!-- ===== CONTACT FORM MODAL ===== -->
+  <div id="email-modal" class="modal-overlay" hidden>
     <div class="modal">
-    <button class="modal-close" aria-label="Close form">×</button>
-    <h3>Contact Me</h3>
-    <form id="email-form" novalidate>
-      <label>
-        Subject
-        <!--<input type="text" name="subject" placeholder="What do you want to talk about?" required>-->
-        <input type="text" name="subject" id="subject" maxlength="50" placeholder="What do you want to talk about?" required>
-        <small class="error" data-for="subject"></small>
-      </label>
-      <label>
-        Message
-        <!--<textarea name="message" placeholder="Type your message here…" required></textarea>-->
-        <textarea name="message" id="message" maxlength="250" placeholder="Type your message here…" required></textarea>
-        <!--<textarea name="message" placeholder="Type your message here…" id="message" maxlength="10000" required></textarea>-->
-        <!--<small id="char-count">0 / 10000</small>-->
-        <small class="error" data-for="message"></small>
-      </label>
-      <label>
-        Your Email
-        <!--<input type="email" name="from" placeholder="How can I reach you? (you@mail.com)" required>-->
-        <input type="email" name="from" id="from" maxlength="50" placeholder="How can I reach you? (you@mail.com)" required>
-        <small class="error" data-for="from"></small>
-      </label>
-      <button type="submit" class="submit-btn">Send This</button>
-      <!--<button type="submit" id="send-btn" disabled>Send This</button>-->
-    </form>
+      <button class="modal-close" aria-label="Close form">×</button>
+      <h3>Contact Me</h3>
+      <form id="email-form" novalidate>
+        <label>
+          Subject
+          <input type="text" name="subject" id="subject" maxlength="50" placeholder="What do you want to talk about?" required>
+          <small class="error" data-for="subject"></small>
+        </label>
+        <label>
+          Message
+          <textarea name="message" id="message" maxlength="250" placeholder="Type your message here…" required></textarea>
+          <small class="error" data-for="message"></small>
+        </label>
+        <label>
+          Your Email
+          <input type="email" name="from" id="from" maxlength="50" placeholder="How can I reach you? (you@mail.com)" required>
+          <small class="error" data-for="from"></small>
+        </label>
+        <button type="submit" class="submit-btn">Send This</button>
+      </form>
     </div>
-    </div>
+  </div>
 
-<div id="success-notif" class="notification" hidden>
-  <button id="notif-close" class="notif-close" aria-label="Close notification">×</button>
-  <p>Message sent!</p>
-</div>
+  <!-- ===== NOTIFICATION AFTER SEND ===== -->
+  <div id="success-notif" class="notification" hidden>
+    <button id="notif-close" class="notif-close" aria-label="Close notification">×</button>
+    <p>Message sent!</p>
+  </div>
 
+  <!-- ===== FOOTER SECTION ===== -->
   <footer>
     &copy; 2025 Danson Pabalan Aguila. All rights reserved. 
-    <small>v.20250716.0635am</small>
+    <small>v.20250716.0640am</small>
   </footer>
 
-<button id="scrollToTopBtn" title="Scroll to top">↑</button>
+  <!-- ===== SCROLL TO TOP BUTTON ===== -->
+  <button id="scrollToTopBtn" title="Scroll to top">↑</button>
 
-<script src="/scripts/main.js"></script>
-  
+  <!-- ===== MAIN JAVASCRIPT ===== -->
+  <script src="/scripts/main.js"></script>
+
 </body>
 </html>
