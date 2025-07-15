@@ -22,13 +22,6 @@
     line-height: 1.6;
   }
 
-html, body {
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-
   header {
     background: var(--brand-dark);
     color: #fff;
@@ -168,41 +161,29 @@ nav a:hover {
     transform: translateY(-1px);
   }
 
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  /* 💡 This enables scrolling when the keyboard pushes elements */
-  overflow-y: auto;
-}
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+  }
 
   .modal-overlay[hidden] {
     display: none;
   }
 
-.modal {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 8px;
-  box-sizing: border-box;
-  width: 90%;
-  max-width: 500px;
-  position: relative;
-
-  /* 💡 Add scroll and max height */
-  max-height: 90vh;
-  overflow-y: auto;
-}
-
+  .modal {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 8px;
+    width: 500px;
+    max-width: 90%;
+    position: relative;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
 
   .modal h3 {
     margin-top: 0;
