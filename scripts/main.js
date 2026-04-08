@@ -16,7 +16,7 @@ document.querySelectorAll('nav a').forEach(link => {
     const extraOffset = parseInt(getComputedStyle(document.documentElement)
       .getPropertyValue('--offset-extra')) || 0;
 
-    const scrollPosition = target.offsetTop - headerHeight - extraOffset;
+    //const scrollPosition = target.offsetTop - headerHeight - extraOffset;
     window.scrollTo({
       top: Math.max(scrollPosition, 0),
       behavior: 'smooth'
