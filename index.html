@@ -1,3 +1,5 @@
+<!-- index3.html -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,18 +47,20 @@
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border-bottom: 0.5px solid rgba(255,255,255,0.1);
     display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2rem; height: 48px;
+    padding: 0 1.25rem; height: 48px;
   }
 
-  .nav-brand {
+  .nav-brand a {
     font-size: 17px; font-weight: 600;
     background: linear-gradient(135deg, #fff 0%, #a0a0a5 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
     letter-spacing: -0.3px;
+    text-decoration: none;
   }
 
-  .nav-links { display: flex; gap: 2rem; }
+  /* Desktop nav links — hidden by default (mobile first), shown at ≥900px */
+  .nav-links { display: none; gap: 2rem; }
   .nav-links a {
     color: rgba(255,255,255,0.65); text-decoration: none;
     font-size: 12px; letter-spacing: 0.01em;
@@ -64,12 +68,50 @@
   }
   .nav-links a:hover { color: #fff; }
 
-  /* ===== SLIDES ===== */
+  /* Hamburger — shown by default (mobile first) */
+  .nav-hamburger {
+    display: flex; flex-direction: column;
+    gap: 5px; cursor: pointer; padding: 8px;
+    background: none; border: none;
+  }
+  .nav-hamburger span {
+    display: block; width: 22px; height: 1.5px;
+    background: rgba(255,255,255,0.7);
+    transition: all 0.25s;
+    border-radius: 2px;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  /* Mobile nav drawer */
+  .nav-drawer {
+    position: fixed; top: 48px; left: 0; right: 0;
+    background: rgba(10,10,10,0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    padding: 1rem 1.5rem 1.5rem;
+    display: none; flex-direction: column; gap: 0;
+    z-index: 99;
+  }
+  .nav-drawer.open { display: flex; }
+  .nav-drawer a {
+    color: rgba(255,255,255,0.75); text-decoration: none;
+    font-size: 17px; font-weight: 400; letter-spacing: -0.01em;
+    padding: 0.85rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.07);
+  }
+  .nav-drawer a:last-child { border-bottom: none; }
+  .nav-drawer a:active { color: #fff; }
+
+  /* ===== SLIDES — mobile-first padding ===== */
   .slide {
     min-height: 100vh;
     display: flex; flex-direction: column;
     align-items: center; justify-content: center;
-    text-align: center; padding: 80px 2rem 4rem;
+    text-align: center;
+    padding: 72px 1.25rem 3.5rem;
     position: relative; overflow: hidden;
   }
 
@@ -99,14 +141,14 @@
 
   /* ===== HERO ===== */
   .hero-eyebrow {
-    font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--apple-blue-light);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards;
   }
 
   .hero-title {
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-size: clamp(2.8rem, 11vw, 7rem);
     font-weight: 700; line-height: 1.03; letter-spacing: -0.03em;
     background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.75) 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -116,34 +158,34 @@
   }
 
   .hero-subtitle {
-    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-    font-weight: 300; letter-spacing: -0.01em;
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+    font-weight: 300; letter-spacing: -0.01em; line-height: 1.55;
     color: rgba(255,255,255,0.55);
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     opacity: 0; animation: fadeUp 0.8s 0.5s ease forwards;
   }
 
   .hero-meta {
-    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
     opacity: 0; animation: fadeUp 0.8s 0.65s ease forwards;
   }
 
   .meta-pill {
     background: rgba(255,255,255,0.07);
     border: 0.5px solid rgba(255,255,255,0.15);
-    border-radius: 100px; padding: 6px 16px;
-    font-size: 13px; color: rgba(255,255,255,0.7);
+    border-radius: 100px; padding: 5px 13px;
+    font-size: 12px; color: rgba(255,255,255,0.7);
   }
 
   .scroll-cue {
-    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    position: absolute; bottom: 1.75rem; left: 50%; transform: translateX(-50%);
     opacity: 0; animation: fadeIn 1s 1.2s ease forwards;
     font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
     color: rgba(255,255,255,0.3); text-align: center;
     pointer-events: none;
   }
   .scroll-cue::after {
-    content: ''; display: block; width: 1px; height: 28px;
+    content: ''; display: block; width: 1px; height: 22px;
     background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
     margin: 8px auto 0;
   }
@@ -152,11 +194,11 @@
   .section-label {
     font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
     text-transform: uppercase; color: var(--apple-blue-light);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .section-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.9rem, 7vw, 3.5rem);
     font-weight: 700; letter-spacing: -0.03em;
     background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
@@ -165,25 +207,26 @@
   }
 
   .section-body {
-    font-size: 1.1rem; font-weight: 300; line-height: 1.65;
+    font-size: 1rem; font-weight: 300; line-height: 1.65;
     color: rgba(255,255,255,0.6); max-width: 640px; margin: 0 auto;
   }
 
-  /* ===== STAT ROW ===== */
+  /* ===== STAT ROW — 2×2 grid on mobile ===== */
   .stat-row {
-    display: flex; gap: 1px; justify-content: center;
-    flex-wrap: wrap; max-width: 1000px; margin: 3rem auto 0;
-    background: rgba(255,255,255,0.06); border-radius: 18px; overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    width: 100%; max-width: 1000px; margin: 2.5rem auto 0;
+    background: rgba(255,255,255,0.06); border-radius: 14px; overflow: hidden;
   }
 
   .stat {
-    flex: 1; min-width: 160px;
-    padding: 2rem; text-align: center;
+    padding: 1.4rem 1rem; text-align: center;
     background: #0d0d0d;
   }
 
   .stat-num {
-    font-size: 3.5rem; font-weight: 700; letter-spacing: -0.04em;
+    font-size: 2.5rem; font-weight: 700; letter-spacing: -0.04em;
     background: linear-gradient(135deg, #fff, rgba(255,255,255,0.6));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -191,31 +234,31 @@
   }
 
   .stat-label {
-    font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 6px;
+    font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 5px;
   }
 
-  /* ===== CARD GRID ===== */
+  /* ===== CARD GRID — single col on mobile ===== */
   .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1px; width: 100%; max-width: 1100px;
-    margin: 4rem auto 0;
+    margin: 2.5rem auto 0;
     border: 1px solid rgba(255,255,255,0.08);
     border-radius: 18px; overflow: hidden;
   }
 
   .card {
     background: var(--apple-card);
-    padding: 2rem 1.75rem;
+    padding: 1.5rem 1.25rem;
     transition: background 0.2s;
   }
 
   .card:hover { background: #242424; }
 
   .card-icon {
-    width: 36px; height: 36px; border-radius: 8px;
+    width: 34px; height: 34px; border-radius: 8px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px; margin-bottom: 1rem;
+    font-size: 17px; margin-bottom: 0.75rem;
   }
 
   .card-icon-blue   { background: rgba(0,113,227,0.15); }
@@ -226,20 +269,20 @@
   .card-icon-teal   { background: rgba(40,200,200,0.12); }
 
   .card h3 {
-    font-size: 17px; font-weight: 600; letter-spacing: -0.02em;
-    margin-bottom: 0.5rem; color: #fff;
+    font-size: 15px; font-weight: 600; letter-spacing: -0.02em;
+    margin-bottom: 0.4rem; color: #fff;
   }
 
   .card p {
-    font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.5);
+    font-size: 13px; line-height: 1.6; color: rgba(255,255,255,0.5);
   }
 
   /* ===== TIMELINE ===== */
-  .timeline { width: 100%; max-width: 800px; margin: 4rem auto 0; }
+  .timeline { width: 100%; max-width: 800px; margin: 2.5rem auto 0; }
 
   .timeline-item {
-    display: flex; gap: 2rem; align-items: flex-start;
-    padding: 2rem 0;
+    display: flex; gap: 1rem; align-items: flex-start;
+    padding: 1.4rem 0;
     border-bottom: 0.5px solid rgba(255,255,255,0.07);
     opacity: 0; transform: translateY(20px);
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -249,38 +292,39 @@
 
   .timeline-dot {
     width: 10px; height: 10px; border-radius: 50%;
-    background: var(--apple-blue); flex-shrink: 0; margin-top: 6px;
+    background: var(--apple-blue); flex-shrink: 0; margin-top: 5px;
     box-shadow: 0 0 0 3px rgba(0,113,227,0.2);
   }
 
   .timeline-content { flex: 1; text-align: left; }
 
   .timeline-period {
-    font-size: 12px; color: rgba(255,255,255,0.35);
-    letter-spacing: 0.04em; margin-bottom: 4px;
+    font-size: 11px; color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em; margin-bottom: 3px;
   }
 
   .timeline-role {
-    font-size: 19px; font-weight: 600; letter-spacing: -0.02em;
-    color: #fff; margin-bottom: 4px;
+    font-size: 15px; font-weight: 600; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 3px;
   }
 
   .timeline-company {
-    font-size: 14px; color: rgba(255,255,255,0.45);
+    font-size: 13px; color: rgba(255,255,255,0.45);
   }
 
-  /* ===== SKILLS GRID ===== */
+  /* ===== SKILLS GRID — 2-col on mobile ===== */
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 8px; max-width: 1000px; margin: 3rem auto 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px; width: 100%; max-width: 1000px; margin: 2.5rem auto 0;
   }
 
   .skill-badge {
     background: rgba(255,255,255,0.05);
     border: 0.5px solid rgba(255,255,255,0.1);
-    border-radius: 10px; padding: 10px 14px;
-    font-size: 13px; color: rgba(255,255,255,0.7);
+    border-radius: 10px; padding: 9px 10px;
+    font-size: 12px; color: rgba(255,255,255,0.7);
+    text-align: center;
     transition: all 0.2s;
   }
 
@@ -290,33 +334,39 @@
     color: #fff;
   }
 
-  /* ===== CTA BUTTONS ===== */
+  /* ===== CTA — stacked on mobile ===== */
+  .cta-wrap {
+    display: flex; flex-direction: column;
+    align-items: center; gap: 0.75rem;
+    margin-top: 2rem; width: 100%;
+  }
+
   .cta-btn {
-    display: inline-block; margin-top: 2.5rem;
+    display: block; width: 100%; max-width: 320px;
     background: var(--apple-blue); color: #fff;
     border-radius: 100px; padding: 14px 32px;
-    font-size: 17px; font-weight: 500; text-decoration: none;
+    font-size: 17px; font-weight: 500; text-decoration: none; text-align: center;
     transition: all 0.2s; cursor: pointer; border: none;
-    font-family: var(--font);
-    letter-spacing: -0.01em;
+    font-family: var(--font); letter-spacing: -0.01em;
   }
 
   .cta-btn:hover { background: #0077ed; transform: scale(1.02); }
   .cta-btn:active { transform: scale(0.98); }
 
   .cta-secondary {
-    display: inline-block; margin-top: 1rem; margin-left: 1rem;
-    color: var(--apple-blue-light); font-size: 17px;
+    display: block; text-align: center;
+    color: var(--apple-blue-light); font-size: 16px;
     text-decoration: none; font-weight: 500;
     transition: opacity 0.2s;
   }
 
   .cta-secondary:hover { opacity: 0.7; }
 
-  /* ===== CONTACT INFO ===== */
+  /* ===== CONTACT INFO — stacked on mobile ===== */
   .contact-row {
-    display: flex; gap: 2rem; justify-content: center;
-    flex-wrap: wrap; margin-top: 2rem;
+    display: flex; flex-direction: column;
+    align-items: center; gap: 1.25rem;
+    margin-top: 2rem; width: 100%;
   }
 
   .contact-item {
@@ -336,7 +386,7 @@
   footer {
     background: #000;
     border-top: 0.5px solid rgba(255,255,255,0.1);
-    padding: 2rem; text-align: center;
+    padding: 2rem 1.25rem; text-align: center;
     font-size: 12px; color: rgba(255,255,255,0.25);
     letter-spacing: 0.02em;
   }
@@ -366,6 +416,7 @@
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     align-items: center; justify-content: center;
+    padding: 1rem;
   }
 
   .modal-overlay.open { display: flex; }
@@ -373,18 +424,16 @@
   .modal {
     background: #1c1c1e;
     border: 0.5px solid rgba(255,255,255,0.12);
-    border-radius: 20px; padding: 2.5rem;
-    width: min(480px, 90vw); position: relative;
+    border-radius: 20px; padding: 1.75rem 1.25rem;
+    width: 100%; max-width: 480px; position: relative;
   }
 
   .modal h3 {
-    font-size: 22px; font-weight: 600;
-    margin-bottom: 1.5rem; color: #fff;
+    font-size: 20px; font-weight: 600;
+    margin-bottom: 1.25rem; color: #fff;
   }
 
-  .modal label {
-    display: block; margin-bottom: 1rem;
-  }
+  .modal label { display: block; margin-bottom: 1rem; }
 
   .modal label span {
     display: block; font-size: 12px;
@@ -397,7 +446,8 @@
     border: 0.5px solid rgba(255,255,255,0.12);
     border-radius: 10px; padding: 10px 14px;
     color: #fff; font-family: var(--font);
-    font-size: 15px; outline: none;
+    font-size: 16px; /* 16px prevents iOS auto-zoom on focus */
+    outline: none;
     transition: border-color 0.2s;
   }
 
@@ -408,7 +458,7 @@
   .modal textarea { height: 100px; resize: none; }
 
   .modal-close {
-    position: absolute; top: 1.25rem; right: 1.25rem;
+    position: absolute; top: 1rem; right: 1rem;
     background: rgba(255,255,255,0.1); border: none;
     color: rgba(255,255,255,0.6); border-radius: 50%;
     width: 30px; height: 30px; font-size: 16px; cursor: pointer;
@@ -420,13 +470,11 @@
 
   /* ===== NOTIFICATION ===== */
   .notification {
-    position: fixed; bottom: 2rem; left: 50%;
-    transform: translateX(-50%);
+    position: fixed; bottom: 1rem; left: 1rem; right: 1rem;
     background: #1c1c1e; border: 0.5px solid rgba(255,255,255,0.15);
-    border-radius: 12px; padding: 1rem 1.5rem;
+    border-radius: 12px; padding: 1rem 1.25rem;
     font-size: 14px; color: #fff; z-index: 300;
     display: flex; align-items: center; gap: 1rem;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   }
 
   .notification[hidden] { display: none; }
@@ -434,28 +482,98 @@
   .notif-close {
     background: none; border: none; color: rgba(255,255,255,0.5);
     cursor: pointer; font-size: 18px; font-family: var(--font);
+    margin-left: auto; flex-shrink: 0;
   }
 
   /* ===== SCROLL TO TOP ===== */
   #scrollToTopBtn {
-    position: fixed; bottom: 2rem; right: 2rem;
+    position: fixed; bottom: 1.25rem; right: 1.25rem;
     background: rgba(255,255,255,0.1);
     border: 0.5px solid rgba(255,255,255,0.15);
     color: #fff; border-radius: 50%;
-    width: 42px; height: 42px; font-size: 18px;
+    width: 38px; height: 38px; font-size: 16px;
     cursor: pointer; display: none;
     align-items: center; justify-content: center;
     transition: all 0.2s; font-family: var(--font);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   #scrollToTopBtn:hover { background: rgba(255,255,255,0.18); }
   #scrollToTopBtn.visible { display: flex; }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 600px) {
-    .nav-links { display: none; }
-    .cta-secondary { display: block; margin-left: 0; margin-top: 1rem; }
+  /* ===== TABLET (≥600px) ===== */
+  @media (min-width: 600px) {
+    nav { padding: 0 2rem; }
+
+    .hero-eyebrow { font-size: 12px; }
+    .meta-pill { font-size: 13px; padding: 6px 16px; }
+
+    .section-body { font-size: 1.05rem; }
+
+    .stat-num { font-size: 3rem; }
+    .stat { padding: 1.75rem 1.25rem; }
+    .stat-label { font-size: 12px; }
+
+    .card { padding: 1.75rem 1.5rem; }
+    .card h3 { font-size: 16px; }
+    .card p { font-size: 14px; }
+
+    .timeline-item { gap: 1.5rem; padding: 1.75rem 0; }
+    .timeline-role { font-size: 17px; }
+    .timeline-period { font-size: 12px; }
+    .timeline-company { font-size: 14px; }
+
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+    }
+    .skill-badge { font-size: 13px; padding: 10px 12px; text-align: left; }
+
+    .cta-wrap { flex-direction: row; justify-content: center; width: auto; }
+    .cta-btn { width: auto; max-width: none; }
+    .cta-secondary { font-size: 17px; }
+
+    .contact-row { flex-direction: row; justify-content: center; }
+
+    .notification {
+      left: 50%; right: auto;
+      transform: translateX(-50%);
+      width: auto; min-width: 280px;
+      bottom: 2rem;
+    }
+
+    #scrollToTopBtn { bottom: 2rem; right: 2rem; width: 42px; height: 42px; font-size: 18px; }
+  }
+
+  /* ===== DESKTOP (≥900px) ===== */
+  @media (min-width: 900px) {
+    .nav-links { display: flex; }
+    .nav-hamburger { display: none; }
+    .nav-drawer { display: none !important; }
+
+    .section-body { font-size: 1.1rem; }
+
+    .stat-row {
+      grid-template-columns: repeat(4, 1fr);
+      border-radius: 18px;
+    }
+    .stat-num { font-size: 3.5rem; }
+    .stat { padding: 2rem; }
+    .stat-label { font-size: 13px; }
+
+    .card-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .card { padding: 2rem 1.75rem; }
+    .card h3 { font-size: 17px; }
+
+    .timeline-item { gap: 2rem; padding: 2rem 0; }
+    .timeline-role { font-size: 19px; }
+
+    .skills-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .skill-badge { text-align: left; }
+
+    .modal { padding: 2.5rem; }
+    .modal h3 { font-size: 22px; }
   }
 </style>
 </head>
@@ -477,7 +595,19 @@
     <a href="#stack">Stack</a>
     <a href="#contact">Contact</a>
   </div>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- Mobile nav drawer -->
+<div class="nav-drawer" id="nav-drawer">
+  <a href="#summary"      class="drawer-link">Summary</a>
+  <a href="#competencies" class="drawer-link">Expertise</a>
+  <a href="#experience"   class="drawer-link">Experience</a>
+  <a href="#stack"        class="drawer-link">Stack</a>
+  <a href="#contact"      class="drawer-link">Contact</a>
+</div>
 
 <!-- ===== SLIDE 1: HERO ===== -->
 <section class="slide slide-hero" id="danson">
@@ -496,7 +626,7 @@
 </section>
 
 <!-- ===== SLIDE 2: SUMMARY ===== -->
-<section class="slide slide-dark" id="summary" style="padding: 7rem 2rem;">
+<section class="slide slide-dark" id="summary">
   <div class="reveal section-label">Professional Summary</div>
   <div class="reveal section-title" style="transition-delay: 0.1s">
     Data-Driven.<br>Experience-Focused.
@@ -526,7 +656,7 @@
 </section>
 
 <!-- ===== SLIDE 3: CORE COMPETENCIES ===== -->
-<section class="slide slide-surface" id="competencies" style="padding: 7rem 2rem;">
+<section class="slide slide-surface" id="competencies">
   <div class="reveal section-label">Core Competencies</div>
   <div class="reveal section-title" style="transition-delay: 0.1s">
     What I bring<br>to the table.
@@ -567,7 +697,7 @@
 </section>
 
 <!-- ===== SLIDE 4: EXPERIENCE ===== -->
-<section class="slide slide-dark" id="experience" style="padding: 7rem 2rem;">
+<section class="slide slide-dark" id="experience">
   <div class="reveal section-label">Work Experience</div>
   <div class="reveal section-title" style="transition-delay: 0.1s">
     A career built<br>on impact.
@@ -618,7 +748,7 @@
 </section>
 
 <!-- ===== SLIDE 5: TECH STACK ===== -->
-<section class="slide slide-surface" id="stack" style="padding: 7rem 2rem;">
+<section class="slide slide-surface" id="stack">
   <div class="reveal section-label">Martech Stack</div>
   <div class="reveal section-title" style="transition-delay: 0.1s">
     The tools that<br>power the work.
@@ -651,20 +781,20 @@
 </section>
 
 <!-- ===== SLIDE 6: EDUCATION ===== -->
-<section class="slide slide-dark" id="education" style="padding: 5rem 2rem; min-height: unset;">
+<section class="slide slide-dark" id="education" style="min-height: unset; padding-top: 4rem; padding-bottom: 4rem;">
   <div class="reveal section-label">Education</div>
   <div class="reveal" style="transition-delay: 0.1s; margin-top: 1rem;">
-    <p style="font-size: 1.3rem; font-weight: 600; color: #fff; letter-spacing: -0.02em;">
+    <p style="font-size: 1.15rem; font-weight: 600; color: #fff; letter-spacing: -0.02em;">
       Pamantasan ng Lungsod ng Muntinlupa
     </p>
-    <p style="font-size: 1rem; color: rgba(255,255,255,0.45); margin-top: 0.4rem;">
+    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.45); margin-top: 0.4rem;">
       Bachelor of Science in Computer Science · 2006
     </p>
   </div>
 </section>
 
 <!-- ===== SLIDE 7: CONTACT CTA ===== -->
-<section class="slide slide-cta" id="contact" style="padding: 7rem 2rem;">
+<section class="slide slide-cta" id="contact">
   <div class="reveal section-label">Contact</div>
   <div class="reveal section-title" style="transition-delay: 0.1s">
     Let's build<br>something great.
@@ -672,14 +802,14 @@
   <p class="reveal section-body" style="transition-delay: 0.2s">
     Open to digital analytics consulting, MarTech implementations, and remote opportunities.
   </p>
-  <div class="reveal" style="transition-delay: 0.3s">
+  <div class="cta-wrap reveal" style="transition-delay: 0.3s">
     <button class="cta-btn" id="email-cta">Get in Touch</button>
     <a class="cta-secondary" href="mailto:d97i42@gmail.com">d97i42@gmail.com ↗</a>
   </div>
   <div class="contact-row reveal" style="transition-delay: 0.4s">
     <div class="contact-item">
       <div class="contact-item-label">Phone</div>
-      <a href="tel:+639566189711">(+63)956-6189-711</a>
+      <a href="tel:+639566189711">(+63) 956-6189-711</a>
     </div>
     <div class="contact-item">
       <div class="contact-item-label">Location</div>
@@ -725,7 +855,7 @@
                placeholder="How can I reach you?" required>
         <small class="error" data-for="from" style="color:#ff6b6b; font-size:12px; margin-top:4px; display:block"></small>
       </label>
-      <button type="submit" class="cta-btn" style="width:100%; margin-top:0.5rem; font-size:15px; padding:12px 16px;">
+      <button type="submit" class="cta-btn" style="width:100%; max-width:none; margin-top:0.5rem; font-size:15px; padding:12px 16px;">
         Send Message
       </button>
     </form>
@@ -750,6 +880,22 @@
   }, { threshold: 0.12 });
 
   document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
+
+  // ── Hamburger menu ──
+  const hamburger = document.getElementById('nav-hamburger');
+  const drawer = document.getElementById('nav-drawer');
+  if (hamburger && drawer) {
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      drawer.classList.toggle('open');
+    });
+    document.querySelectorAll('.drawer-link').forEach(link => {
+      link.addEventListener('click', () => {
+        drawer.classList.remove('open');
+        hamburger.classList.remove('open');
+      });
+    });
+  }
 
   // ── Scroll to top button ──
   const scrollBtn = document.getElementById('scrollToTopBtn');
@@ -798,7 +944,7 @@
 
     if (!valid) return;
 
-    // Submit to Formspree (replace YOUR_FORM_ID in the action above)
+    // Submit to Formspree
     try {
       const res = await fetch(form.action, {
         method: 'POST',
