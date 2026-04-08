@@ -11,7 +11,8 @@ document.querySelectorAll('nav a').forEach(link => {
     const target = document.getElementById(targetId);
     if (!target) return;
 
-    const headerHeight = document.querySelector('header').offsetHeight;
+    //const headerHeight = document.querySelector('header').offsetHeight;
+    const headerHeight = document.querySelector('nav').offsetHeight;
     const extraOffset = parseInt(getComputedStyle(document.documentElement)
       .getPropertyValue('--offset-extra')) || 0;
 
