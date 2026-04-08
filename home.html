@@ -1,0 +1,825 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Danson Aguila | Digital Analytics Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Google Tag Manager -->
+<script src="/scripts/gtm.js"></script>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --apple-white: #f5f5f7;
+    --apple-black: #1d1d1f;
+    --apple-gray: #6e6e73;
+    --apple-blue: #0071e3;
+    --apple-blue-light: #2997ff;
+    --apple-surface: #161617;
+    --apple-card: #1c1c1e;
+    --apple-card-border: rgba(255,255,255,0.08);
+    --apple-divider: rgba(255,255,255,0.1);
+    --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Helvetica Neue', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: #000;
+    color: var(--apple-white);
+    font-family: var(--font);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(0,0,0,0.72);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 2rem; height: 48px;
+  }
+
+  .nav-brand {
+    font-size: 17px; font-weight: 600;
+    background: linear-gradient(135deg, #fff 0%, #a0a0a5 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.3px;
+  }
+
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    color: rgba(255,255,255,0.65); text-decoration: none;
+    font-size: 12px; letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #fff; }
+
+  /* ===== SLIDES ===== */
+  .slide {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center; padding: 80px 2rem 4rem;
+    position: relative; overflow: hidden;
+  }
+
+  .slide-hero {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(0,113,227,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 80% 70%, rgba(100,50,200,0.10) 0%, transparent 60%),
+      #000;
+  }
+
+  .slide-dark {
+    background: #000;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .slide-surface {
+    background: #0a0a0a;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  .slide-cta {
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 50%, rgba(0,113,227,0.2) 0%, transparent 70%),
+      #000;
+    border-top: 0.5px solid rgba(255,255,255,0.06);
+  }
+
+  /* ===== HERO ===== */
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--apple-blue-light);
+    margin-bottom: 1.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.2s ease forwards;
+  }
+
+  .hero-title {
+    font-size: clamp(3rem, 8vw, 7rem);
+    font-weight: 700; line-height: 1.03; letter-spacing: -0.03em;
+    background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.75) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    opacity: 0; animation: fadeUp 0.8s 0.35s ease forwards;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: 300; letter-spacing: -0.01em;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 3rem;
+    opacity: 0; animation: fadeUp 0.8s 0.5s ease forwards;
+  }
+
+  .hero-meta {
+    display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.65s ease forwards;
+  }
+
+  .meta-pill {
+    background: rgba(255,255,255,0.07);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    border-radius: 100px; padding: 6px 16px;
+    font-size: 13px; color: rgba(255,255,255,0.7);
+  }
+
+  .scroll-cue {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    opacity: 0; animation: fadeIn 1s 1.2s ease forwards;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3); text-align: center;
+    pointer-events: none;
+  }
+  .scroll-cue::after {
+    content: ''; display: block; width: 1px; height: 28px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+    margin: 8px auto 0;
+  }
+
+  /* ===== SECTION TYPOGRAPHY ===== */
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--apple-blue-light);
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700; letter-spacing: -0.03em;
+    background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .section-body {
+    font-size: 1.1rem; font-weight: 300; line-height: 1.65;
+    color: rgba(255,255,255,0.6); max-width: 640px; margin: 0 auto;
+  }
+
+  /* ===== STAT ROW ===== */
+  .stat-row {
+    display: flex; gap: 1px; justify-content: center;
+    flex-wrap: wrap; max-width: 1000px; margin: 3rem auto 0;
+    background: rgba(255,255,255,0.06); border-radius: 18px; overflow: hidden;
+  }
+
+  .stat {
+    flex: 1; min-width: 160px;
+    padding: 2rem; text-align: center;
+    background: #0d0d0d;
+  }
+
+  .stat-num {
+    font-size: 3.5rem; font-weight: 700; letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #fff, rgba(255,255,255,0.6));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 13px; color: rgba(255,255,255,0.4); margin-top: 6px;
+  }
+
+  /* ===== CARD GRID ===== */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px; width: 100%; max-width: 1100px;
+    margin: 4rem auto 0;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 18px; overflow: hidden;
+  }
+
+  .card {
+    background: var(--apple-card);
+    padding: 2rem 1.75rem;
+    transition: background 0.2s;
+  }
+
+  .card:hover { background: #242424; }
+
+  .card-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; margin-bottom: 1rem;
+  }
+
+  .card-icon-blue   { background: rgba(0,113,227,0.15); }
+  .card-icon-purple { background: rgba(150,80,230,0.15); }
+  .card-icon-green  { background: rgba(40,200,100,0.12); }
+  .card-icon-orange { background: rgba(255,150,40,0.12); }
+  .card-icon-red    { background: rgba(255,60,60,0.12); }
+  .card-icon-teal   { background: rgba(40,200,200,0.12); }
+
+  .card h3 {
+    font-size: 17px; font-weight: 600; letter-spacing: -0.02em;
+    margin-bottom: 0.5rem; color: #fff;
+  }
+
+  .card p {
+    font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.5);
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline { width: 100%; max-width: 800px; margin: 4rem auto 0; }
+
+  .timeline-item {
+    display: flex; gap: 2rem; align-items: flex-start;
+    padding: 2rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.07);
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+
+  .timeline-item.visible { opacity: 1; transform: translateY(0); }
+
+  .timeline-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--apple-blue); flex-shrink: 0; margin-top: 6px;
+    box-shadow: 0 0 0 3px rgba(0,113,227,0.2);
+  }
+
+  .timeline-content { flex: 1; text-align: left; }
+
+  .timeline-period {
+    font-size: 12px; color: rgba(255,255,255,0.35);
+    letter-spacing: 0.04em; margin-bottom: 4px;
+  }
+
+  .timeline-role {
+    font-size: 19px; font-weight: 600; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 4px;
+  }
+
+  .timeline-company {
+    font-size: 14px; color: rgba(255,255,255,0.45);
+  }
+
+  /* ===== SKILLS GRID ===== */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px; max-width: 1000px; margin: 3rem auto 0;
+  }
+
+  .skill-badge {
+    background: rgba(255,255,255,0.05);
+    border: 0.5px solid rgba(255,255,255,0.1);
+    border-radius: 10px; padding: 10px 14px;
+    font-size: 13px; color: rgba(255,255,255,0.7);
+    transition: all 0.2s;
+  }
+
+  .skill-badge:hover {
+    background: rgba(0,113,227,0.15);
+    border-color: rgba(0,113,227,0.4);
+    color: #fff;
+  }
+
+  /* ===== CTA BUTTONS ===== */
+  .cta-btn {
+    display: inline-block; margin-top: 2.5rem;
+    background: var(--apple-blue); color: #fff;
+    border-radius: 100px; padding: 14px 32px;
+    font-size: 17px; font-weight: 500; text-decoration: none;
+    transition: all 0.2s; cursor: pointer; border: none;
+    font-family: var(--font);
+    letter-spacing: -0.01em;
+  }
+
+  .cta-btn:hover { background: #0077ed; transform: scale(1.02); }
+  .cta-btn:active { transform: scale(0.98); }
+
+  .cta-secondary {
+    display: inline-block; margin-top: 1rem; margin-left: 1rem;
+    color: var(--apple-blue-light); font-size: 17px;
+    text-decoration: none; font-weight: 500;
+    transition: opacity 0.2s;
+  }
+
+  .cta-secondary:hover { opacity: 0.7; }
+
+  /* ===== CONTACT INFO ===== */
+  .contact-row {
+    display: flex; gap: 2rem; justify-content: center;
+    flex-wrap: wrap; margin-top: 2rem;
+  }
+
+  .contact-item {
+    font-size: 14px; color: rgba(255,255,255,0.45); text-align: center;
+  }
+
+  .contact-item a {
+    color: var(--apple-blue-light); text-decoration: none;
+  }
+
+  .contact-item-label {
+    color: rgba(255,255,255,0.25); font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #000;
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+    padding: 2rem; text-align: center;
+    font-size: 12px; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.02em;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ===== MODAL ===== */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    align-items: center; justify-content: center;
+  }
+
+  .modal-overlay.open { display: flex; }
+
+  .modal {
+    background: #1c1c1e;
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-radius: 20px; padding: 2.5rem;
+    width: min(480px, 90vw); position: relative;
+  }
+
+  .modal h3 {
+    font-size: 22px; font-weight: 600;
+    margin-bottom: 1.5rem; color: #fff;
+  }
+
+  .modal label {
+    display: block; margin-bottom: 1rem;
+  }
+
+  .modal label span {
+    display: block; font-size: 12px;
+    color: rgba(255,255,255,0.4); margin-bottom: 6px;
+  }
+
+  .modal input, .modal textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 0.5px solid rgba(255,255,255,0.12);
+    border-radius: 10px; padding: 10px 14px;
+    color: #fff; font-family: var(--font);
+    font-size: 15px; outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .modal input:focus, .modal textarea:focus {
+    border-color: var(--apple-blue);
+  }
+
+  .modal textarea { height: 100px; resize: none; }
+
+  .modal-close {
+    position: absolute; top: 1.25rem; right: 1.25rem;
+    background: rgba(255,255,255,0.1); border: none;
+    color: rgba(255,255,255,0.6); border-radius: 50%;
+    width: 30px; height: 30px; font-size: 16px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s; font-family: var(--font);
+  }
+
+  .modal-close:hover { background: rgba(255,255,255,0.18); }
+
+  /* ===== NOTIFICATION ===== */
+  .notification {
+    position: fixed; bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    background: #1c1c1e; border: 0.5px solid rgba(255,255,255,0.15);
+    border-radius: 12px; padding: 1rem 1.5rem;
+    font-size: 14px; color: #fff; z-index: 300;
+    display: flex; align-items: center; gap: 1rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+
+  .notification[hidden] { display: none; }
+
+  .notif-close {
+    background: none; border: none; color: rgba(255,255,255,0.5);
+    cursor: pointer; font-size: 18px; font-family: var(--font);
+  }
+
+  /* ===== SCROLL TO TOP ===== */
+  #scrollToTopBtn {
+    position: fixed; bottom: 2rem; right: 2rem;
+    background: rgba(255,255,255,0.1);
+    border: 0.5px solid rgba(255,255,255,0.15);
+    color: #fff; border-radius: 50%;
+    width: 42px; height: 42px; font-size: 18px;
+    cursor: pointer; display: none;
+    align-items: center; justify-content: center;
+    transition: all 0.2s; font-family: var(--font);
+    backdrop-filter: blur(10px);
+  }
+
+  #scrollToTopBtn:hover { background: rgba(255,255,255,0.18); }
+  #scrollToTopBtn.visible { display: flex; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .cta-secondary { display: block; margin-left: 0; margin-top: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Google Tag Manager (noscript fallback) -->
+<noscript>
+  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBB2NXQK"
+          height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+
+<!-- ===== NAVIGATION ===== -->
+<nav>
+  <span class="nav-brand">Danson Aguila</span>
+  <div class="nav-links">
+    <a href="#summary">Summary</a>
+    <a href="#competencies">Expertise</a>
+    <a href="#experience">Experience</a>
+    <a href="#stack">Stack</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== SLIDE 1: HERO ===== -->
+<section class="slide slide-hero" id="top">
+  <div class="hero-eyebrow">Digital Analytics Professional</div>
+  <h1 class="hero-title">Danson Aguila.</h1>
+  <p class="hero-subtitle">
+    Senior Manager, Digital Analytics<br>
+    Adobe &amp; Google MarTech Expert
+  </p>
+  <div class="hero-meta">
+    <span class="meta-pill">🇵🇭 Philippines</span>
+    <span class="meta-pill">Sun Life Financial</span>
+    <span class="meta-pill">14+ Years Experience</span>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- ===== SLIDE 2: SUMMARY ===== -->
+<section class="slide slide-dark" id="summary" style="padding: 7rem 2rem;">
+  <div class="reveal section-label">Professional Summary</div>
+  <div class="reveal section-title" style="transition-delay: 0.1s">
+    Data-Driven.<br>Experience-Focused.
+  </div>
+  <p class="reveal section-body" style="transition-delay: 0.2s">
+    An accomplished digital analytics and marketing technology professional with extensive expertise in the Adobe and Google analytics suites — transforming raw digital signals into optimized experiences and measurable business outcomes.
+  </p>
+
+  <div class="stat-row reveal" style="transition-delay: 0.3s">
+    <div class="stat">
+      <div class="stat-num">14+</div>
+      <div class="stat-label">Years in Analytics</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Major Enterprises</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">Tools &amp; Platforms</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Distinct Roles</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SLIDE 3: CORE COMPETENCIES ===== -->
+<section class="slide slide-surface" id="competencies" style="padding: 7rem 2rem;">
+  <div class="reveal section-label">Core Competencies</div>
+  <div class="reveal section-title" style="transition-delay: 0.1s">
+    What I bring<br>to the table.
+  </div>
+
+  <div class="card-grid reveal" style="transition-delay: 0.25s">
+    <div class="card">
+      <div class="card-icon card-icon-blue">📊</div>
+      <h3>Data Analysis &amp; Insights</h3>
+      <p>Analyzing multi-source data to extract actionable insights, creating dashboards, and reporting on trends and customer behaviors.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon card-icon-purple">🏗</div>
+      <h3>Technical Implementation</h3>
+      <p>Designing data collection architectures, coding, testing, and validating analytics and marketing tags end-to-end.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon card-icon-green">🎯</div>
+      <h3>Optimization &amp; Testing</h3>
+      <p>Leading A/B and multivariate testing, personalization strategies, and continuous performance improvements.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon card-icon-orange">🤝</div>
+      <h3>Stakeholder Collaboration</h3>
+      <p>Translating business needs into technical solutions in partnership with internal teams and leadership.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon card-icon-red">🔍</div>
+      <h3>Quality &amp; Compliance</h3>
+      <p>Conducting audits, enforcing tracking standards, and ensuring adherence to corporate and regulatory policies.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon card-icon-teal">⚙️</div>
+      <h3>Operational Efficiency</h3>
+      <p>Managing workflows, fostering a compliance culture, and optimizing processes to meet delivery and quality targets.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SLIDE 4: EXPERIENCE ===== -->
+<section class="slide slide-dark" id="experience" style="padding: 7rem 2rem;">
+  <div class="reveal section-label">Work Experience</div>
+  <div class="reveal section-title" style="transition-delay: 0.1s">
+    A career built<br>on impact.
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:#0071e3; box-shadow:0 0 0 3px rgba(0,113,227,0.2)"></div>
+      <div class="timeline-content">
+        <div class="timeline-period">October 2024 — Present</div>
+        <div class="timeline-role">Senior Manager, Digital Analytics</div>
+        <div class="timeline-company">Sun Life Financial · Experience Design, Asia</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:#8b5cf6; box-shadow:0 0 0 3px rgba(139,92,246,0.2)"></div>
+      <div class="timeline-content">
+        <div class="timeline-period">November 2023 — September 2024</div>
+        <div class="timeline-role">Digital Analyst</div>
+        <div class="timeline-company">ProSource BPO / iSelect</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,0.2)"></div>
+      <div class="timeline-content">
+        <div class="timeline-period">January 2022 — November 2023</div>
+        <div class="timeline-role">Manager, MarTech</div>
+        <div class="timeline-company">HSBC Electronic Data Processing Philippines · DPS</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:#0071e3; box-shadow:0 0 0 3px rgba(0,113,227,0.2)"></div>
+      <div class="timeline-content">
+        <div class="timeline-period">January 2019 — December 2022</div>
+        <div class="timeline-role">Senior Manager, Digital Analytics</div>
+        <div class="timeline-company">Sun Life Financial · Digital Marketing, Asia</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:#ef4444; box-shadow:0 0 0 3px rgba(239,68,68,0.2)"></div>
+      <div class="timeline-content">
+        <div class="timeline-period">January 2012 — December 2018</div>
+        <div class="timeline-role">Manager, Digital Insights</div>
+        <div class="timeline-company">HSBC Electronic Data Processing Philippines · GPS</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SLIDE 5: TECH STACK ===== -->
+<section class="slide slide-surface" id="stack" style="padding: 7rem 2rem;">
+  <div class="reveal section-label">Martech Stack</div>
+  <div class="reveal section-title" style="transition-delay: 0.1s">
+    The tools that<br>power the work.
+  </div>
+
+  <div class="skills-grid reveal" style="transition-delay: 0.2s">
+    <div class="skill-badge">Adobe Analytics</div>
+    <div class="skill-badge">Adobe Target</div>
+    <div class="skill-badge">Adobe Launch</div>
+    <div class="skill-badge">Adobe Data Warehouse</div>
+    <div class="skill-badge">Google Analytics 4</div>
+    <div class="skill-badge">Google Tag Manager</div>
+    <div class="skill-badge">Google Search Console</div>
+    <div class="skill-badge">Tealium iQ</div>
+    <div class="skill-badge">Contentsquare</div>
+    <div class="skill-badge">SessionCam / Glassbox</div>
+    <div class="skill-badge">Qualtrics</div>
+    <div class="skill-badge">Tableau / PowerBI</div>
+    <div class="skill-badge">Looker Studio</div>
+    <div class="skill-badge">BrightEdge</div>
+    <div class="skill-badge">ObservePoint</div>
+    <div class="skill-badge">HEAP Analytics</div>
+    <div class="skill-badge">Medallia DXA</div>
+    <div class="skill-badge">SemRush</div>
+    <div class="skill-badge">HTML / CSS / JavaScript</div>
+    <div class="skill-badge">MySQL / REST API</div>
+    <div class="skill-badge">VB.net / VBA / Macros</div>
+    <div class="skill-badge">JIRA / Confluence</div>
+  </div>
+</section>
+
+<!-- ===== SLIDE 6: EDUCATION ===== -->
+<section class="slide slide-dark" id="education" style="padding: 5rem 2rem; min-height: unset;">
+  <div class="reveal section-label">Education</div>
+  <div class="reveal" style="transition-delay: 0.1s; margin-top: 1rem;">
+    <p style="font-size: 1.3rem; font-weight: 600; color: #fff; letter-spacing: -0.02em;">
+      Pamantasan ng Lungsod ng Muntinlupa
+    </p>
+    <p style="font-size: 1rem; color: rgba(255,255,255,0.45); margin-top: 0.4rem;">
+      Bachelor of Science in Computer Science · 2006
+    </p>
+  </div>
+</section>
+
+<!-- ===== SLIDE 7: CONTACT CTA ===== -->
+<section class="slide slide-cta" id="contact" style="padding: 7rem 2rem;">
+  <div class="reveal section-label">Contact</div>
+  <div class="reveal section-title" style="transition-delay: 0.1s">
+    Let's build<br>something great.
+  </div>
+  <p class="reveal section-body" style="transition-delay: 0.2s">
+    Open to digital analytics consulting, MarTech implementations, and remote opportunities.
+  </p>
+  <div class="reveal" style="transition-delay: 0.3s">
+    <button class="cta-btn" id="email-cta">Get in Touch</button>
+    <a class="cta-secondary" href="mailto:d97i42@gmail.com">d97i42@gmail.com ↗</a>
+  </div>
+  <div class="contact-row reveal" style="transition-delay: 0.4s">
+    <div class="contact-item">
+      <div class="contact-item-label">Phone</div>
+      <a href="tel:+639624983532">(+63) 962-4983-532</a>
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Location</div>
+      Biñan, Laguna, Philippines
+    </div>
+    <div class="contact-item">
+      <div class="contact-item-label">Education</div>
+      BS Computer Science, PLM 2006
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  &copy; 2025 Danson Pabalan Aguila · All rights reserved
+  <small style="display:block; margin-top:4px; opacity:0.5">v.20250730.0106pm.prod</small>
+</footer>
+
+<!-- ===== SCROLL TO TOP ===== -->
+<button id="scrollToTopBtn" title="Scroll to top" aria-label="Scroll to top">↑</button>
+
+<!-- ===== CONTACT MODAL ===== -->
+<div id="email-modal" class="modal-overlay">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close">×</button>
+    <h3>Get in Touch</h3>
+    <form id="email-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+      <label>
+        <span>Subject</span>
+        <input type="text" name="subject" id="subject" maxlength="50"
+               placeholder="What do you want to talk about?" required>
+        <small class="error" data-for="subject" style="color:#ff6b6b; font-size:12px; margin-top:4px; display:block"></small>
+      </label>
+      <label>
+        <span>Message</span>
+        <textarea name="message" id="message" maxlength="250"
+                  placeholder="Type your message here…" required></textarea>
+        <small class="error" data-for="message" style="color:#ff6b6b; font-size:12px; margin-top:4px; display:block"></small>
+      </label>
+      <label>
+        <span>Your Email</span>
+        <input type="email" name="_replyto" id="from" maxlength="50"
+               placeholder="How can I reach you?" required>
+        <small class="error" data-for="from" style="color:#ff6b6b; font-size:12px; margin-top:4px; display:block"></small>
+      </label>
+      <button type="submit" class="cta-btn" style="width:100%; margin-top:0.5rem; font-size:15px; padding:12px 16px;">
+        Send Message
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ===== SUCCESS NOTIFICATION ===== -->
+<div id="success-notif" class="notification" hidden>
+  <button id="notif-close" class="notif-close" aria-label="Close notification">×</button>
+  <p>✓ Message sent! I'll get back to you soon.</p>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="/scripts/main.js"></script>
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .timeline-item').forEach(el => observer.observe(el));
+
+  // ── Scroll to top button ──
+  const scrollBtn = document.getElementById('scrollToTopBtn');
+  window.addEventListener('scroll', () => {
+    scrollBtn.classList.toggle('visible', window.scrollY > 400);
+  });
+  scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ── Modal open/close ──
+  const modal = document.getElementById('email-modal');
+  const openBtn = document.getElementById('email-cta');
+  const closeBtn = document.getElementById('modal-close');
+
+  openBtn.addEventListener('click', () => modal.classList.add('open'));
+  closeBtn.addEventListener('click', () => modal.classList.remove('open'));
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+
+  // ── Form submission (Formspree) ──
+  const form = document.getElementById('email-form');
+  const successNotif = document.getElementById('success-notif');
+  const notifClose = document.getElementById('notif-close');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Clear previous errors
+    document.querySelectorAll('.error').forEach(el => el.textContent = '');
+
+    const subject = document.getElementById('subject').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const from    = document.getElementById('from').value.trim();
+    let valid = true;
+
+    if (!subject) {
+      document.querySelector('[data-for="subject"]').textContent = 'Please enter a subject.';
+      valid = false;
+    }
+    if (!message) {
+      document.querySelector('[data-for="message"]').textContent = 'Please enter a message.';
+      valid = false;
+    }
+    if (!from || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(from)) {
+      document.querySelector('[data-for="from"]').textContent = 'Please enter a valid email address.';
+      valid = false;
+    }
+
+    if (!valid) return;
+
+    // Submit to Formspree (replace YOUR_FORM_ID in the action above)
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (res.ok) {
+        form.reset();
+        modal.classList.remove('open');
+        successNotif.hidden = false;
+        setTimeout(() => { successNotif.hidden = true; }, 5000);
+      } else {
+        alert('Something went wrong. Please try emailing me directly at d97i42@gmail.com');
+      }
+    } catch {
+      alert('Could not send the message. Please email me directly at d97i42@gmail.com');
+    }
+  });
+
+  notifClose.addEventListener('click', () => { successNotif.hidden = true; });
+</script>
+</body>
+</html>
